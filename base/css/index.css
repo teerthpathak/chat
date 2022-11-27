@@ -1,0 +1,223 @@
+* /* Default CSS In Every Element */
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root /* Variables */
+{
+    --veryLight: #ffffff;
+    --light: rgb(233, 233, 234);
+
+    --danger: rgb(239, 14, 14);
+    --higherDanger: rgb(211, 33, 33);
+
+    --success: rgb(87, 236, 19);
+    --greatSuccess: rgb(42, 208, 39);
+
+    --primary: rgb(27, 12, 241);
+    --bestPrimary: rgb(18, 5, 198);
+
+    --warning: rgb(239, 134, 14);
+    --greaterWarning: rgb(227, 132, 24);
+
+    --dark: #333333;
+    --veryDark: #000000;
+}
+
+body /* Body */
+{
+    background-color: var(--light);
+}
+
+/* Header */
+#navbar /* Navbar */
+{
+    display: flex;
+}
+
+/* Element With Id 'left' */
+#left
+{
+    align-items: center;
+    justify-content: start;
+    width: 25%;
+}
+
+#left ul
+{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    align-items: center;
+}
+
+#left ul li
+{
+    list-style: none;
+}
+
+#left ul li img
+{
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+#left ul li h1
+{
+    margin: 20px;
+}
+
+#navbar ul li h1 a
+{
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--veryDark);
+}
+
+/* Element With Id 'center' */
+#center
+{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+#center h2
+{
+    display: none;
+}
+
+/* Element With Id 'right' */
+#right
+{
+    width: 25%;
+    display: flex;
+    justify-content: end;
+}
+
+#right button
+{
+    margin: 20px 20px 20px 5px;
+}
+
+/* Footer */
+#footer
+{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    background-color: var(--light);
+    color: var(--veryDark);
+    width: 100vw;
+    padding: 5px 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer img
+{
+    width: 25px;
+    height: 25px;
+}
+
+#footer p
+{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+/* Burger */
+#burger
+{
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 15px;
+}
+
+#burger .line
+{
+    border-radius: 50px;
+    width: 33px;
+    background-color: var(--veryDark);
+    height: 4px;
+    margin: 5px 3px;
+}
+
+/* CSS To Make The Page Responsive */
+@media only screen and (max-width: 1020px) /* Executed When Device Width Is '1024px' Or Less */
+{
+    #right button /* right */
+    {
+        margin: 20px 13px 20px 5px;
+    }
+}
+
+@media only screen and (max-width: 960px) /* Executed When Device Width Is '960px' Or Less */
+{
+    #left /* left */
+    {
+        width: 45%;
+    }
+    
+    #right /* right */
+    {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 860px) /* Executed When Device Width Is '860px' Or Less */
+{
+    
+    #navbar /* Navbar */
+    {
+        display: grid;
+    }
+
+    #left, /* left */
+    #left ul {
+        width: 100%;
+        justify-content: start;
+        align-items: center;
+    }
+
+    #center /* center */
+    {
+        width: 90%;
+        margin: 0% 5%;
+    }
+
+    #right /* right */
+    {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #burger /* burger */
+    {
+        display: block;
+    }
+
+    /* Responsive */
+    .navbarHeightResponsive {
+        height: 69px;
+    }
+
+    .opacity-0Responsive {
+        opacity: 0;
+    }
+
+    .display-noneResponsive {
+        display: none !important;
+    }
+}

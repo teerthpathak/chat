@@ -1,0 +1,28 @@
+.container /* Class 'container' */
+{
+    margin: 5% 35%;
+}
+
+@media only screen and (max-width: 600px) /* Executed When Device Width Is '600px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 5% 25%;
+    }
+}
+
+@media only screen and (max-width: 370px) /* Executed When Device Width Is '370px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 5% 20%;
+    }
+}
+
+@media only screen and (max-width: 300px) /* Executed When Device Width Is '300px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 5% 10%;
+    }
+}

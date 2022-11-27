@@ -1,0 +1,118 @@
+.hr /* To Be Used Instead Of 'hr' Tag */
+{
+    width: 98%;
+    margin: 0% 1%;
+    height: 2px;
+    background-color: var(--veryDark);
+    color: transparent;
+}
+
+.br /* To Be Used Instead Of 'br' Tag */
+{
+    color: transparent;
+    background-color: transparent;
+    height: 30px;
+}
+
+/* Utility Classes */
+.container /* container */
+{
+    background-color: var(--veryLight);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--veryDark);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.input /* input */
+{
+    width: 160px;
+    height: 15px;
+    padding: 3px;
+    margin: 5px;
+    border: 2px solid var(--veryDark);
+    border-radius: 5px;
+}
+
+.btn  /* btn */
+{
+    border-radius: 3px;
+    margin: 5px 3px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.btn:hover /* When Class 'btn' Hovered */
+{
+    background-color: var(--veryLight);
+    border: 2px solid var(--veryLight);
+}
+
+/* Colors */
+.danger /* Shade Of 'red' */
+{
+    background-color: var(--danger);
+    color: var(--veryLight);
+    border: 2px solid var(--danger);
+}
+
+.danger:hover /* When Class 'danger' Hovered */
+{
+    background-color: var(--higherDanger);
+    border: 2px solid var(--higherDanger);
+}
+
+.success /* Shade Of 'green' */
+{
+    background-color: var(--success);
+    color: var(--veryLight);
+    border: 2px solid var(--success);
+}
+
+.success:hover /* When Class 'success' Hovered */
+{
+    background-color: var(--greatSuccess);
+    border: 2px solid var(--greatSuccess);
+}
+
+.primary /* Shade Of 'blue' */
+{
+    background-color: var(--primary);
+    color: var(--veryLight);
+    border: 2px solid var(--primary);
+}
+
+.primary:hover /* When Class 'primary' Hovered */
+{
+    background-color: var(--bestPrimary);
+    border: 2px solid var(--bestPrimary);
+}
+
+.dark /* Shade Of 'black' */
+{
+    background-color: var(--dark);
+    color: var(--veryLight);
+    border: 2px solid var(--dark);
+}
+
+.dark:hover /* When Class 'dark' Hovered */
+{
+    background-color: var(--veryDark);
+    border: 2px solid var(--veryDark);
+}
+
+.warning /* Shade Of 'orange' */
+{
+    background-color: var(--warning);
+    color: var(--veryLight);
+    border: 2px solid var(--warning);
+}
+
+.warning:hover /* When Class 'warning' Hovered */
+{
+    background-color: var(--greaterWarning);
+    border: 2px solid var(--greaterWarning);
+}

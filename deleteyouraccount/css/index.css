@@ -1,0 +1,55 @@
+/* CLASS 'container' */
+.container
+{
+    margin: 5% 20%;
+    padding: 2%;
+}
+
+.container ul div
+{
+    padding: 3px;
+}
+
+#message /* ID 'message' */
+{
+    display: none;
+    margin-left: 3px;
+}
+
+@media only screen and (max-width: 810px) /* Executed When Device Width Is '810px' Or Less */
+{
+    #deleteMyAccountButton /* ID 'deleteMyAccountButton' */
+    {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 545px) /* Executed When Device Width Is '545px' Or Less */
+{
+    /* CLASS 'container' */
+    .container
+    {
+        margin: 5% 5%;
+    }
+    
+    .container ul div
+    {
+        padding: 1px;
+    }
+}
+
+@media only screen and (max-width: 350px) /* Executed When Device Width Is '350px' Or Less */
+{
+    .container /* CLASS 'container' */
+    {
+        margin: 5% 3%;
+    }
+}
+
+@media only screen and (max-width: 335px) /* Executed When Device Width Is '335px' Or Less */
+{
+    .container /* CLASS 'container' */
+    {
+        margin: 5% 1%;
+    }
+}

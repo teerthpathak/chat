@@ -1,0 +1,142 @@
+.container /* Class 'container' */
+{
+    width: 70vw;
+    margin: 20px auto;
+    height: 65vh;
+    padding: 20px;
+    overflow-y: auto;
+    display: block;
+}
+
+/* Utility Classes */
+.left /* Class 'left' */
+{
+    background-color: var(--veryLight);
+    margin: 1% 20% 1% 0%;
+    border: 2px solid var(--veryDark);
+    border-radius: 5px;
+}
+
+.right /* Class 'right' */
+{
+    background-color: var(--veryLight);
+    margin: 1% 0% 1% 20%;
+    border: 2px solid var(--veryDark);
+    border-radius: 5px;
+}
+
+.p /* Class 'p' (Mainly Used For Paragraphs) */
+{
+    padding: 10px 10px 0px 10px;
+    font-size: 15px;
+}
+
+.small
+{
+    font-size: 13px;
+    padding: 0px 10px 10px 10px;
+}
+
+.sub-btn
+{
+    border-radius: 7px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.br /* Edit In Utility Class 'br' From '/base/css/utility.css' */
+{
+    height: 55px !important;
+}
+
+/* DIV With Id 'send' */
+#send
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send .input
+{
+    width: 60vw;
+    height: 20px;
+}
+
+/* CSS To Make The Page Responsive */
+@media only screen and (max-width: 450px) /* Executed When Device Width Is '450px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        width: 85vw;
+    }
+
+    /* Utility Classes */
+    .p /* Class 'p' */
+    {
+        padding: 5px 5px 0px 5px;
+    }
+
+    .small /* Class 'small' */
+    {
+        padding: 0px 5px 5px 5px;
+    }
+
+    .sub-btn /* Class 'sub-btn' */
+    {
+        margin-left: 1px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 350px) /* Executed When Device Width Is '350px' Or Less */
+{
+    /* Utility Classes */
+    .left /* Class 'left' */
+    {
+        margin: 1% 10% 1% 0%;
+    }
+
+    .right /* Class 'right' */
+    {
+        margin: 1% 0% 1% 10%;
+    }
+}
+
+@media only screen and (max-width: 320px) /* Executed When Device Width Is '320px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        width: 83vw;
+    }
+
+    .br /* Class 'br' */
+    {
+        height: 65px !important;
+    }
+
+    /* Utility Classes */
+    .left /* Class 'left' */
+    {
+        margin: 1% 5% 1% 0%;
+    }
+
+    .right /* Class 'right' */
+    {
+        margin: 1% 0% 1% 5%;
+    }
+}
+
+@media only screen and (max-width: 305px) /* Executed When Device Width Is '305px' Or Less */
+{
+    /* Utility Classes */
+    .left /* Class 'left' */
+    {
+        margin: 1% 3% 1% 0%;
+    }
+
+    .right /* Class 'right' */
+    {
+        margin: 1% 0% 1% 3%;
+    }
+}

@@ -1,0 +1,60 @@
+/* Utility Classes */
+.container /* Class 'container' */
+{
+    margin: 10px 30%;
+}
+
+.p /* Class 'p' */
+{
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 1270px) /* Executed When Device Width Is '1270px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 10px 20%;
+    }
+}
+
+@media only screen and (max-width: 860px) /* Executed When Device Width Is '860px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 10px 3%;
+    }
+}
+
+@media only screen and (max-width: 550px) /* Executed When Device Width Is '550px' Or Less */
+{
+    .container /* Class 'container' */
+    {
+        margin: 10px 1%;
+    }
+
+    .middle, /* Class 'middle' */
+    .bottom /* Class 'bottom' */
+    {
+        display: grid;
+    }
+
+    .br /* Edit In Utility Class 'br' From '/base/css/utility.css' */
+    {
+        height: 50px;
+    }
+}
+
+@media only screen and (max-width: 360px) /* Executed When Device Width Is '360px' Or Less */
+{
+    .top, /* Class 'top' */
+    .middle, /* Class 'middle' */
+    .bottom /* Class 'bottom' */
+    {
+        display: grid;
+    }
+
+    .br /* Edit In Utility Class 'br' From '/base/css/utility.css' */
+    {
+        height: 60px;
+    }
+}

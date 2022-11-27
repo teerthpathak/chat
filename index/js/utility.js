@@ -1,0 +1,1 @@
+function setData(){var e=`<link rel="stylesheet" href="${Location}index/css/index.css"> <!-- LINK stylesheet -->`;document.getElementById("head").innerHTML+=e,setTimeout(()=>{loadScript("/chat/index/js/index.js")},500)}setData();

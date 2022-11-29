@@ -13,9 +13,10 @@ function redirect() // Function Redirect - To Redirect If User Is Not Logged In
 }
 redirect(); // Function Redirect To Check After The Page Is Loaded
 
-function redirectToCreateChatRoomPage() // Function Redirect To Create Chat Room Page - Will Redirect To Page `/createchatroom`
+function openCreateChatRoomSettings() // Function Open Create Chat Room Settings - Will Open Create Chat Room Settings
 {
-    window.location = '/chat/createchatroom/'; // Navigate To '/chat/createchatroom/'
+    document.getElementById("createChatRoomDiv").style.display = 'flex'; // Will Set The Style Of Element With Id `createChatRoomDiv` To 'display: flex;'
+    document.getElementById("openCreateChatRoomSettingsButton").style.display = 'none'; // Will Set The Style Of Element With Id `openCreateChatRoomSettingsButton` To 'display: none;'
 }
 
 function getData() // Function Get Data - WIll Get Data From The Database
@@ -261,4 +262,58 @@ function open_chat(roomId, Location) // Function Open Chat - Will Open Chat For 
     localStorage.setItem("roomId", roomId); // Will Set Item 'roomId' From Variable 'roomId'
     localStorage.setItem("Location", Location); // Will Set Item 'Location' From Variable 'Location'
     window.location = '/chat/chat/'; // Navigate To '/chat/chat/'
+}
+
+function redirect() // Function Redirect - To Redirect If User Is Not Logged In
+{
+    let name = localStorage.getItem("name"); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'
+    let username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
+    if (name == undefined || null && username == undefined || null) // If 'name' And 'username' Is Equal To 'undefined' Or 'null'
+    {
+        window.location = '/chat/login/'; // Navigate To '/chat/login/'
+    }
+}
+redirect(); // Function Redirect To Check After The Page Is Loaded
+
+function createChatRoom() // Function Create Chat Room - Will Create Chat Room When Executed
+{
+    username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
+    room_name = document.getElementById("room_name").value; // Getting Data From Element With Id 'room_name' And Setting Data In Variable 'room_name'
+
+    room_name.toString; // Converting Variable 'room_name' To String
+    roomId = room_name
+        .replaceAll(".", "ā")
+        .replaceAll("#", "ḥ")
+        .replaceAll("$", "ḍ")
+        .replaceAll("[", "ś")
+        .replaceAll("]", "ē")
+        .replaceAll(" ", "æ");
+
+    rooms.database().ref(`/`).child(`${username}/${roomId}`).update( // Will Push Data Into Database - Location `/` And will Create A Key `${username}/${roomId}`
+        {
+            name: room_name, // name - Child Of Variable `${username}/${roomId}` And Will Set The Value Of Variable 'room_name'
+            location: username // location - Child Of Variable `${username}/${roomId}` And Will Set The Value Of Variable 'username'
+        }
+    );
+
+    rooms.database().ref(`/${username}/${roomId}`).child(`users/${username}`).update( // Will Push Data Into Database - Location `/${username}/${roomId}` And will Create A Key `users/${username}`
+        {
+            role: 'admin' // role - Child Of Variable `${username}` And Will Set The Value 'admin'
+        }
+    );
+
+    document.getElementById("message").innerText = `Creating Chat Room Please Wait...`; // Will Set Inner Text Of Element With Id 'message' To `Creating Chat Room Please Wait...`
+    document.getElementById("message").style.color = 'rgb(0, 210, 0)'; // Will Set The Style Of Element With Id 'message' To 'color: rgb(0, 210, 0);'
+    document.getElementById("message").style.display = `unset`; // Will Set The Style Of Element With Id 'message' To 'display: unset;'
+
+    setTimeout(() => // Will Wait For 5000 Microseconds Before Execution 
+        {
+            document.getElementById("message").innerText = `Chat Room Created Successfully`; // Will Set Inner Text Of Element With Id 'message' To `Chat Room Created Successfully`
+            getData(); // Function Get Data Call To Get The Data From The Database And Reset It Because The Data Is Updated
+            document.getElementById("openCreateChatRoomSettingsButton").style.display = 'unset'; // Will Set The Style Of Element With Id `openCreateChatRoomSettingsButton` To 'display: unset;'
+            document.getElementById("createChatRoomDiv").style.display = 'none'; // Will Set The Style Of Element With Id `createChatRoomDiv` To 'display: none;'
+            document.getElementById("room_name").value = ''; // Setting Value Of Element With 'room_name' To ''
+            document.getElementById("message").innerText = ''; // Will Set Inner Text Of Element With Id 'message' To ''
+        }, 
+    5000);
 }

@@ -1,28 +1,10 @@
-function redirect() // Function Redirect - To Redirect If User Is Not Logged In
-{
-    let name = localStorage.getItem("name"); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'    
-    let username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
-    if (name == undefined || null && username == undefined || null) // If 'name' And 'username' Is Equal To 'undefined' Or 'null'
-    {
-        window.location = '/chat/login/'; // Navigate To '/chat/login/'
-    }
-    else {
-        localStorage.removeItem('roomId'); // Will Remove Item `roomId` From Local Storage
-        localStorage.removeItem('Location'); // Will Remove Item `Location` From Local Storage
-    }
-}
-redirect(); // Function Redirect To Check After The Page Is Loaded
-
-function openCreateChatRoomSettings() // Function Open Create Chat Room Settings - Will Open Create Chat Room Settings
-{
-    document.getElementById("createChatRoomDiv").style.display = 'flex'; // Will Set The Style Of Element With Id `createChatRoomDiv` To 'display: flex;'
-    document.getElementById("openCreateChatRoomSettingsButton").style.display = 'none'; // Will Set The Style Of Element With Id `openCreateChatRoomSettingsButton` To 'display: none;'
-}
+redirect('==', username, 'login'); // Function Redirect Call
+localStorage.removeItem('roomId'); // Will Remove Item `roomId` From Local Storage
+localStorage.removeItem('Location'); // Will Remove Item `Location` From Local Storage
 
 function getData() // Function Get Data - WIll Get Data From The Database
 {
     document.getElementById('output').innerHTML = ''; // Will Set Inner HTML Of The Element With Id 'output' To ''
-    let username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
     rooms.database().ref(`/${username}`).on("value", function (snapshot) // Will Set Location To `/${username}` (Database)
     {
         var getData = snapshot.val(); // Will Get Data From `/${username}` And Will Set Data It In The Variable 'getData'
@@ -261,19 +243,14 @@ function open_chat(roomId, Location) // Function Open Chat - Will Open Chat For 
 {
     localStorage.setItem("roomId", roomId); // Will Set Item 'roomId' From Variable 'roomId'
     localStorage.setItem("Location", Location); // Will Set Item 'Location' From Variable 'Location'
-    window.location = '/chat/chat/'; // Navigate To '/chat/chat/'
+    redirect('!=', roomId, 'chat'); // Function Redirect Call
 }
 
-function redirect() // Function Redirect - To Redirect If User Is Not Logged In
+function openCreateChatRoomSettings() // Function Open Create Chat Room Settings - Will Open Create Chat Room Settings
 {
-    let name = localStorage.getItem("name"); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'
-    let username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
-    if (name == undefined || null && username == undefined || null) // If 'name' And 'username' Is Equal To 'undefined' Or 'null'
-    {
-        window.location = '/chat/login/'; // Navigate To '/chat/login/'
-    }
+    document.getElementById('createChatRoomDiv').style.display = 'flex'; // Will Set The Style Of Element With Id 'createChatRoomDiv' To 'display: flex;'
+    document.getElementById('openCreateChatRoomSettingsButton').style.display = 'none'; // Will Set The Style Of Element With Id 'openCreateChatRoomSettingsButton' To 'display: none;'
 }
-redirect(); // Function Redirect To Check After The Page Is Loaded
 
 function createChatRoom() // Function Create Chat Room - Will Create Chat Room When Executed
 {

@@ -36,7 +36,7 @@
             </div> <!-- DIV With Id 'center' And Class 'opacity-0Responsive display-noneResponsive' Ends -->
             <div id="right" class="opacity-0Responsive display-noneResponsive"> <!-- DIV With Id 'right' And Class 'opacity-0Responsive display-noneResponsive' Starts -->
                 <div id="redirectToDeleteYourAccountPage"> <!-- DIV With Id 'redirectToDeleteYourAccountPage' Starts -->
-                    <button class="btn danger" onclick="redirectToDeleteYourAccountPage()">Delete Your Account</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'redirectToDeleteYourAccountPage()' -->
+                    <button class="btn danger" onclick="redirect('!=', 'username', 'deleteyouraccount')">Delete Your Account</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'redirect('!=', 'username', 'deleteyouraccount')' -->
                 </div> <!-- DIV With Id 'redirectToDeleteYourAccountPage' Ends -->
                 <div id="logout"> <!-- DIV With Id 'logout' Starts -->
                     <button class="btn danger" onclick="logout()">Logout</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'logout()' -->
@@ -61,6 +61,7 @@
         </p> <!-- P Ends -->
     </footer> <!-- FOOTER With id 'footer' Ends -->
     <script src="/chat/base/js/base.js"></script> <!-- Script With SRC '/chat/base/js/base.js' -->
+    <script src="/chat/base/js/utility.js"></script> <!-- Script With SRC '/chat/base/js/base.js' -->
 </body> <!-- BODY With Id 'body' Ends -->
 </html> <!-- HTML With Id 'html' Ends -->
 

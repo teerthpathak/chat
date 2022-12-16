@@ -1,21 +1,8 @@
-function redirect() // Function Redirect - To Redirect If User Is Not Logged In
-{
-    let name = localStorage.getItem('name'); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'
-    let username = localStorage.getItem('username'); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
-    if (name != undefined || null && username != undefined || null) // If 'name' And 'username' Is Not Equal To 'undefined' Or 'null'
-    {
-        window.location = '/chat/'; // Navigate To '/chat/'
-    }
-    else // Else 'name' And 'username' Is Equal To 'undefined' Or 'null'
-    {
-        document.getElementById("logout").style.display = 'none'; // Will Set The Style Of Element With Id `logout` To 'display: none;'
-        document.getElementById("redirectToDeleteYourAccountPage").style.display = 'none'; // Will Set The Style Of Element With Id `redirectToDeleteYourAccountPage` To 'display: none;'
-
-        document.getElementById("welcome").innerText = 'Singup'; // Will Set Inner Text Of Element With Id 'welcome' To `Singup`
-        document.getElementById("welcome").style.display = 'unset'; // Will Set The Style Of Element With Id `welcome` To 'display: unset;'
-    }
-}
-redirect(); // Function Redirect To Check After The Page Is Loaded
+redirect('!=', username, ''); // Function Redirect Call
+document.getElementById("logout").style.display = 'none'; // Will Set The Style Of Element With Id `logout` To 'display: none;'
+document.getElementById("redirectToDeleteYourAccountPage").style.display = 'none'; // Will Set The Style Of Element With Id `redirectToDeleteYourAccountPage` To 'display: none;'
+document.getElementById("welcome").innerText = 'Singup'; // Will Set Inner Text Of Element With Id 'welcome' To `Singup`
+document.getElementById("welcome").style.display = 'unset'; // Will Set The Style Of Element With Id `welcome` To 'display: unset;'
 
 function singup() // Function Singup - Will Create A New Account
 {
@@ -56,7 +43,7 @@ function singup() // Function Singup - Will Create A New Account
 
     setTimeout(() => // Will Wait For 1000 Microseconds Before Execution
         {
-            window.location = '/chat/'; // Navigate To '/chat/'
+            redirect('!=', username, ''); // Function Redirect Call
         },
     1000);
 }

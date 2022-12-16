@@ -1,17 +1,4 @@
-let username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
-let name = localStorage.getItem("name"); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'
-function redirect() // Function Redirect - To Redirect If User Is Not Logged In
-{
-    if (name == undefined || null && username == undefined || null) // If 'name' And 'username' Is Equal To 'undefined' Or 'null'
-    {
-        window.location = '/chat/login/'; // Navigate To '/chat/login/'
-    }
-    else // Else 'name' And 'username' Is Not Equal To 'undefined' Or 'null'
-    {
-        document.getElementById("redirectToDeleteYourAccountPage").style.display = 'none'; // Will Set The Style Of Element With Id 'redirectToDeleteYourAccountPage' To 'display: none;'
-    }
-}
-redirect(); // Function Redirect To Check After The Page Is Loaded
+redirect('==', username, 'login'); // Function Redirect Call
 
 function deleteMyAccount() // Function Delete My Account - Will Delete The Account Of The Logged In User
 {
@@ -29,17 +16,16 @@ function deleteMyAccount() // Function Delete My Account - Will Delete The Accou
         chats.database().ref('/').child(`${username}`).remove(); // Will Delete The Users Data From `chats` Database
         
         document.getElementById("message").innerText = `Deleting Your Account Please Wait...`; // Will Set Inner Text Of Element With Id 'message' To `Deleting Your Account Please Wait...` (Note: This Line Of Code Is Above The Code Which Delete The Account Of The Logged In User And The Above Lines Will Execute First But It Takes Some Time To Execute So Tlii That The User Will Be Seeing `Deleting Your Account Please Wait...` And The Reason Why This Is Added Below The Lines Of Code That Will Delete The Account Of The Logged In User Is JavaScript Runs On A Non-Blocking IO Model)
-        document.getElementById("message").style.color = 'rgb(204, 214, 30)'; // Will Set The Style Of Element With Id 'message' To 'color: rgb(0, 210, 0);'
+        document.getElementById("message").style.color = 'rgb(0, 210, 0)'; // Will Set The Style Of Element With Id 'message' To 'color: rgb(0, 210, 0);'
+
+        localStorage.removeItem("username"); // Will Remove Item `username` From Local Storage
+        localStorage.removeItem("name"); // Will Remove Item `name` From Local Storage
+        localStorage.removeItem('roomId'); // Will Remove Item `roomId` From Local Storage
+        localStorage.removeItem('Location'); // Will Remove Item `Location` From Local Storage
 
         setTimeout(() => // Will Wait For 5000 Microseconds Before Execution
             {
-                    document.getElementById("message").innerText = `Account Deleted Successfully`; // Will Set Inner Text Of Element With Id 'message' To `Account Deleted Successfully`
-                    document.getElementById("message").style.color = 'rgb(0, 210, 0)'; // Will Set The Style Of Element With Id 'message' To 'color: rgb(0, 210, 0)'
-
-                    localStorage.removeItem("username"); // Will Remove Item `username` From Local Storage
-                    localStorage.removeItem("name"); // Will Remove Item `name` From Local Storage
-
-                    window.location = '/chat/singup/'; // Navigate To '/chat/singup/'
+                redirect('!=', username, 'singup'); // Function Redirect Call
             }, 
         5000);
     }

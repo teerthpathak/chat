@@ -1,4 +1,9 @@
 var Location = document.location.pathname; // Getting Path Name And Storing It In Variable 'Location'
+var name = localStorage.getItem('name'); // Getting Item From Local Storage And Storing In Variable - name
+var username = localStorage.getItem('username'); // Getting Item From Local Storage And Storing In Variable - username
+var roomId = localStorage.getItem('roomId'); // Getting Item From Local Storage 'roomId' And Setting Data In Variable 'roomId'
+var roomLocation = localStorage.getItem('Location'); // Getting Item From Local Storage 'Location' And Setting Data In Variable 'Location'
+
 function doNoting() {} // This Function Will Do Noting This Is Just To Be Used In The Case Where Noting Should Be Done
 
 function loadScript(fileLocation) // Function loadScript - To Load Script After The Document Is Loaded
@@ -56,7 +61,7 @@ function setData() // Function Set Data - To Set Data In Element(s)
                     </div> <!-- DIV With Id 'center' And Class 'opacity-0Responsive display-noneResponsive' Ends -->
                     <div id="right" class="opacity-0Responsive display-noneResponsive"> <!-- DIV With Id 'right' And Class 'opacity-0Responsive display-noneResponsive' Starts -->
                         <div id="redirectToDeleteYourAccountPage"> <!-- DIV With Id 'redirectToDeleteYourAccountPage' Starts -->
-                            <button class="btn danger" onclick="redirectToDeleteYourAccountPage()">Delete Your Account</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'redirectToDeleteYourAccountPage()' -->
+                            <button class="btn danger" onclick="redirect('!=', username, 'deleteyouraccount')">Delete Your Account</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'redirect('!=', username, 'deleteyouraccount')' -->
                         </div> <!-- DIV With Id 'redirectToDeleteYourAccountPage' Ends -->
                         <div id="logout"> <!-- DIV With Id 'logout' Starts -->
                             <button class="btn danger" onclick="logout()">Logout</button> <!-- BUTTON With Class 'btn, danger' And When Clicked 'logout()' -->

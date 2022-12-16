@@ -1,24 +1,11 @@
-function redirect() // Function Redirect - To Check 'roomId' And 'Location'
-{
-    roomId = localStorage.getItem('roomId'); // Getting Item From Local Storage 'roomId' And Setting Data In Variable 'roomId'
-    Location = localStorage.getItem('Location'); // Getting Item From Local Storage 'Location' And Setting Data In Variable 'Location'
-    if(roomId == undefined || null && Location == undefined || null) // If 'roomId' And 'Location' Is Equal To 'undefined' Or 'null'
-    {
-        window.location = '/chat/'; // Navigate To '/chat/'
-    }
-}
-redirect(); // Function Redirect Call
-
-Location = localStorage.getItem("Location"); // Getting Item From Local Storage 'Location' And Setting Data In Variable 'Location'
-roomId = localStorage.getItem("roomId"); // Getting Item From Local Storage 'roomId' And Setting Data In Variable 'roomId'
-username = localStorage.getItem("username"); // Getting Item From Local Storage 'username' And Setting Data In Variable 'username'
+redirect('==', roomId, '');
 
 function getData() // Function Get Data
 {
     document.getElementById("container").innerHTML = ""; // Will Set Inner HTML Of Element With Id 'container' To ''
-    chats.database().ref(`/${Location}/${roomId}`).on("value", function (snapshot) // Will Set Location To `/${Location}/${roomId}` (Database)
+    chats.database().ref(`/${roomLocation}/${roomId}`).on("value", function (snapshot) // Will Set Location To `/${roomLocation}/${roomId}` (Database)
     {
-        var getData = snapshot.val(); // Will Get Data From `/${Location}/${roomId}` And Will Set Data It In The Variable 'getData'
+        var getData = snapshot.val(); // Will Get Data From `/${roomLocation}/${roomId}` And Will Set Data It In The Variable 'getData'
         var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]); // Will Convert The Data Of Variable 'getData' Into An Array (Will Only Show Keys) And Will Store It In A Variable 'getKeysArray'
         var getArray = Object.entries(getData); // Will Convert The Data Of Variable 'getData' Into An Array (Will Show Keys And Values Both) And Will Store It In A Variable 'getArray'
 
@@ -72,7 +59,6 @@ getData(); // Function Get Data Call To Get The Data From The Database And Set I
 
 function send() // Function Send - To Send The Data To The Database
 {
-    let name = localStorage.getItem("name"); // Getting Item From Local Storage 'name' And Setting Data In Variable 'name'
     message = document.getElementById("message_input").value; // Getting Data From Element With Id 'message_input' And Setting Data In Variable 'message'
     getDate = new Date(); // Will Get Date And Store It In A Variable 'getDate'
 
@@ -87,7 +73,7 @@ function send() // Function Send - To Send The Data To The Database
     chatId.toString; // Converting Variable 'chatId' To String
     chatId = chatId.replaceAll(" ", "ṇ") // Will Replace All The ' ' In Variable 'chatId' To 'ṇ' (If Any) And Store It In A Variable 'chatId'
 
-    chats.database().ref(`/${Location}/${roomId}`).child(chatId).update( // Will Push Data Into Database - Location `/${Location}/${roomId}` And will Create A Key `${chatId}`
+    chats.database().ref(`/${roomLocation}/${roomId}`).child(chatId).update( // Will Push Data Into Database - Location `/${roomLocation}/${roomId}` And will Create A Key `${chatId}`
         {
             date: fullDate, // date - Child Of Variable 'chatId' And Will Set The Value Of Variable 'fullDate'
             message: message, // message - Child Of Variable 'chatId' And Will Set The Value Of Variable 'message'
@@ -102,6 +88,6 @@ function send() // Function Send - To Send The Data To The Database
 
 function delete_message(chatId) // Function Delete Message - Will Delete A Message Send By The User
 {
-    chats.database().ref(`/${Location}/${roomId}`).child(`${chatId}`).remove() // Will Delete The Key `${chatId}` From The Location `/${Location}/${roomId}`
+    chats.database().ref(`/${roomLocation}/${roomId}`).child(`${chatId}`).remove() // Will Delete The Key `${chatId}` From The Location `/${roomLocation}/${roomId}`
     getData(); // Function Get Data Call To Get The Data From The Database And Reset It Because The Data Is Updated
 }

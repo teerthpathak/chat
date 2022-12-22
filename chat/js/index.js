@@ -26,27 +26,21 @@ function getData() // Function Get Data
             var content; // Variable 'content'
             if (sendersUsername == username) // If Variable 'sendersUsername' Data Is Equal To Variable 'username' Data
             {
-                content 
-                    =
-                        `
-                            <div class="right"> <!-- DIV With Class 'right' Starts -->
-                                <p class="p">${message}</p> <!-- P With Class 'p' -->
-                                <small class="small" id="small_${username}">${name} | ${date} | ${time} <button class='sub-btn danger' onclick="delete_message('${chatId}')">&times;</button></small> <!-- SMALL With Class 'small', Id 'small_${username}' And BUTTON Class 'sub-btn danger' And Onclick 'delete_message('${chatId}')' -->
-                            </div> <!-- DIV With Class 'right' Ends -->
-                        `
-                    ;
+                content = chatRight.replaceAll('{message}', message) // Will Replace All The '{message}' In Variable 'chatRight' To Variable 'message' (If Any) And Store It In A Variable 'content'
+                                   .replaceAll('{date}', date) // Will Replace All The '{date}' In Variable 'chatRight' To Variable 'date' (If Any) And Store It In A Variable 'content'
+                                   .replaceAll('{time}', time) // Will Replace All The '{time}' In Variable 'chatRight' To Variable 'time' (If Any) And Store It In A Variable 'content'
+                                   .replaceAll('{chatId}', chatId) // Will Replace All The '{chatId}' In Variable 'chatRight' To Variable 'chatId' (If Any) And Store It In A Variable 'content'
+                                   .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'chatRight' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                   .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'chatRight' To Variable 'username' (If Any) And Store It In A Variable 'content'
             }
             else if(sendersUsername != username) // If Variable 'sendersUsername' Data Is Not Equal To Variable 'username' Data
             {
-                content
-                    =
-                        `
-                            <div class="left"> <!-- DIV With Class 'left' Starts -->
-                                <p class="p">${message}</p> <!-- P With Class 'p' -->
-                                <small class="small" id="small_${username}">${name} | ${date} | ${time}</small> <!-- SMALL With Class 'small' And Id 'small_${username}' -->
-                            </div> <!-- DIV With Class 'left' Ends -->
-                        `
-                    ;
+                content = chatLeft.replaceAll('{message}', message) // Will Replace All The '{message}' In Variable 'chatLeft' To Variable 'message' (If Any) And Store It In A Variable 'content'
+                                  .replaceAll('{date}', date) // Will Replace All The '{date}' In Variable 'chatLeft' To Variable 'date' (If Any) And Store It In A Variable 'content'
+                                  .replaceAll('{time}', time) // Will Replace All The '{time}' In Variable 'chatLeft' To Variable 'time' (If Any) And Store It In A Variable 'content'
+                                  .replaceAll('{chatId}', chatId) // Will Replace All The '{chatId}' In Variable 'chatLeft' To Variable 'chatId' (If Any) And Store It In A Variable 'content'
+                                  .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'chatLeft' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                  .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'chatLeft' To Variable 'username' (If Any) And Store It In A Variable 'content'
             }
             else {
                 doNoting(); // Function Do Noting Call

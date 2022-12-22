@@ -33,105 +33,36 @@ function getData() // Function Get Data - WIll Get Data From The Database
                 name = getData['name']; // Will Get `data` From Variable `getData` 'name' Index And Will Store It In A Variable 'name'
                 role = user['role']; // Will Get `data` From Variable `user` 'role' Index And Will Store It In A Variable 'role'
 
-                var admin // Variable 'admin'
-                    =
-                        `
-                            <div class="container"> <!-- DIV With Class 'container' Starts -->
-                                <div class="top"> <!-- DIV With Class 'top' Starts -->
-                                    <input type="text" class="input" id="change_name_${roomId}" value="${name}" style="display: none;"> <!-- INPUT With Type 'text', Class 'input', Id 'change_name_${roomId}', Value '${name}' And Style 'display: none;' -->
-                                    <button class="btn dark" id="save_${roomId}" style="display: none;" onclick="save_edited_room_name('${roomId}')">Save Changes</button> <!-- BUTTON With Class 'btn dark', Id 'save_${roomId}', Style 'display: none;' And Onclick 'save_edited_room_name('${roomId}')' -->
-                                    <p id="${roomId}_p" class='p' style="display: unset;">${name}</p> <!-- P With Id '${roomId}_p', Class 'p' And Style 'display: unset;' -->
-                                </div> <!-- DIV With Class 'top' Ends -->
-                                <div class="middle"> <!-- DIV With Class 'middle' Starts -->
-                                    <button class="btn success" id="open_${roomId}" onclick="open_chat('${roomId}', '${Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_${roomId}', Style 'display: none;' And Onclick 'open_chat('${roomId}', '${Location}')' -->
-                                    <label for="admin" style="display: none;" id="admin_label_${roomId}">Admin <input type="radio" name="role" id="admin_radio_${roomId}" value="admin"></label> <!-- Label With For 'admin', Style 'display: none;', Id 'admin_label_${roomId}' And INPUT With Type 'radio', Name 'role', Id 'admin_radio_${roomId}', Value 'admin' -->
-                                    <label for="regular" style="display: none;" id="regular_label_${roomId}">Regular <input type="radio" name="role" id="regular_radio_${roomId}" value="regular"></label> <!-- Label With For 'regular', Style 'display: none;', Id 'regular_label_${roomId}' And INPUT With Type 'radio', Name 'role', Id 'regular_radio_${roomId}', Value 'regular' -->
-                                    <input type="email" class="input" id='add_user_input_${roomId}' placeholder="Enter The Email" style="display: none;"> <!-- INPUT With Type 'email', Class 'input', Id 'add_user_input_${roomId}', Placeholder 'Enter The Email' And Style 'display: none;' -->
-                                    <button class="btn primary" id="add_user_${roomId}" onclick="add_user('${Location}', '${roomId}')" style="display: none;">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'add_user_${roomId}', Style 'display: none;' And Onclick 'add_user('${Location}', '${roomId}')' -->
-                                </div> <!-- DIV With Class 'middle' Ends -->
-                                <div class="bottom"> <!-- DIV With Class 'bottom' Starts -->
-                                    <button class="btn primary" id="show_add_user_${roomId}" onclick="show_add_user_settings('${roomId}')">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'show_add_user_${roomId}', And Onclick 'show_add_user_settings('${roomId}')' -->
-                                    <button class="btn warning" onclick="show_edit_group_name_settings('${roomId}');">Edit Group Name</button> <!-- BUTTON With Class 'btn warning', And Onclick 'show_edit_group_name_settings('${roomId}');' -->
-                                    <button class="btn danger" id="exit_${roomId}" onclick="exit_room('${Location}', '${roomId}', '${username}')">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_${roomId}' And Onclick 'exit_room('${Location}', '${roomId}', '${username}')' -->
-                                </div> <!-- DIV With Class 'bottom' Ends -->
-                            </div> <!-- DIV With Class 'container' Ends -->
-                        `
-                    ;
-                var regular // Variable 'regular'
-                    =
-                       `
-                            <div class="container"> <!-- DIV With Class 'container' Starts -->
-                                <div class="top"> <!-- DIV With Class 'top' Starts -->
-                                    <p id="${roomId}_p" class='p' style="display: unset;">${name}</p> <!-- P With Id '${roomId}_p', Class 'p' And Style 'display: unset;' -->
-                                </div> <!-- DIV With Class 'top' Ends -->
-                                <div class="middle"> <!-- DIV With Class 'middle' Starts -->
-                                    <button class="btn success" id="open_${roomId}" onclick="open_chat('${roomId}', '${Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_${roomId}', Style 'display: none;' And Onclick 'open_chat('${roomId}', '${Location}')' -->
-                                </div> <!-- DIV With Class 'middle' Ends -->
-                                <div class="bottom"> <!-- DIV With Class 'bottom' Starts -->
-                                    <button class="btn danger" id="exit_${roomId}" onclick="exit_room('${Location}', '${roomId}', '${username}')">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_${roomId}' And Onclick 'exit_room('${Location}', '${roomId}', '${username}')' -->
-                                </div> <!-- DIV With Class 'bottom' Ends -->
-                            </div> <!-- DIV With Class 'container' Ends -->
-                       `
-                    ;
-                var superAdmin // Variable 'superAdmin'
-                    =
-                        `
-                            <div class="container"> <!-- DIV With Class 'container' Starts -->
-                                <div class="top"> <!-- DIV With Class 'top' Starts -->
-                                    <input type="text" class="input" id="change_name_${roomId}" value="${name}" style="display: none;"> <!-- INPUT With Type 'text', Class 'input', Id 'change_name_${roomId}', Value '${name}' And Style 'display: none;' -->
-                                    <button class="btn dark" id="save_${roomId}" style="display: none;" onclick="save_edited_room_name('${roomId}')">Save Changes</button> <!-- BUTTON With Class 'btn dark', Id 'save_${roomId}', Style 'display: none;' And Onclick 'save_edited_room_name('${roomId}')' -->
-                                    <p id="${roomId}_p" class='p' style="display: unset;">${name}</p> <!-- P With Id '${roomId}_p', Class 'p' And Style 'display: unset;' -->
-                                </div> <!-- DIV With Class 'top' Ends -->
-                                <div class="middle"> <!-- DIV With Class 'middle' Starts -->
-                                    <button class="btn success" id="open_${roomId}" onclick="open_chat('${roomId}', '${Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_${roomId}', Style 'display: none;' And Onclick 'open_chat('${roomId}', '${Location}')' -->
-                                    <label for="admin" style="display: none;" id="admin_label_${roomId}">Admin <input type="radio" name="role" id="admin_radio_${roomId}" value="admin"></label> <!-- Label With For 'admin', Style 'display: none;', Id 'admin_label_${roomId}' And INPUT With Type 'radio', Name 'role', Id 'admin_radio_${roomId}', Value 'admin' -->
-                                    <label for="regular" style="display: none;" id="regular_label_${roomId}">Regular <input type="radio" name="role" id="regular_radio_${roomId}" value="regular"></label> <!-- Label With For 'regular', Style 'display: none;', Id 'regular_label_${roomId}' And INPUT With Type 'radio', Name 'role', Id 'regular_radio_${roomId}', Value 'regular' -->
-                                    <input type="email" class="input" id='add_user_input_${roomId}' placeholder="Enter The Email" style="display: none;"> <!-- INPUT With Type 'email', Class 'input', Id 'add_user_input_${roomId}', Placeholder 'Enter The Email' And Style 'display: none;' -->
-                                    <button class="btn primary" id="add_user_${roomId}" onclick="add_user('${Location}', '${roomId}')" style="display: none;">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'add_user_${roomId}', Style 'display: none;' And Onclick 'add_user('${Location}', '${roomId}')' -->
-                                </div> <!-- DIV With Class 'middle' Ends -->
-                                <div class="bottom"> <!-- DIV With Class 'bottom' Starts -->
-                                    <button class="btn primary" id="show_add_user_${roomId}" onclick="show_add_user_settings('${roomId}')">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'show_add_user_${roomId}', And Onclick 'show_add_user_settings('${roomId}')' -->
-                                    <button class="btn warning" onclick="show_edit_group_name_settings('${roomId}');">Edit Group Name</button> <!-- BUTTON With Class 'btn warning', And Onclick 'show_edit_group_name_settings('${roomId}');' -->
-                                    <button class="btn danger" id="delete_${roomId}" onclick="delete_room('${Location}', '${roomId}')">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_${roomId}' And Onclick 'delete_room('${Location}', '${roomId}')' -->
-                                </div> <!-- DIV With Class 'bottom' Ends -->
-                            </div> <!-- DIV With Class 'container' Ends -->
-                        `
-                    ;
-                var superRegular // Variable 'superRegular'
-                    =
-                        `
-                            <div class="container"> <!-- DIV With Class 'container' Starts -->
-                                <div class="top"> <!-- DIV With Class 'top' Starts -->
-                                    <p id="${roomId}_p" class='p' style="display: unset;">${name}</p> <!-- P With Id '${roomId}_p', Class 'p' And Style 'display: unset;' -->
-                                </div> <!-- DIV With Class 'top' Ends -->
-                                <div class="middle"> <!-- DIV With Class 'middle' Starts -->
-                                    <button class="btn success" id="open_${roomId}" onclick="open_chat('${roomId}', '${Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_${roomId}', Style 'display: none;' And Onclick 'open_chat('${roomId}', '${Location}')' -->
-                                </div> <!-- DIV With Class 'middle' Ends -->
-                                <div class="bottom"> <!-- DIV With Class 'bottom' Starts -->
-                                    <button class="btn danger" id="delete_${roomId}" onclick="delete_room('${Location}', '${roomId}')">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_${roomId}' And Onclick 'delete_room('${Location}', '${roomId}')' -->
-                                </div> <!-- DIV With Class 'bottom' Ends -->
-                            </div> <!-- DIV With Class 'container' Ends -->
-                        `
-                    ;
-
                 function setData() // Function Set Data - Will Set Data Of Room
                 {
                     var content; // Variable 'content' - To Store Data From Variable 'admin', Variable 'regular', Variable 'superAdmin', Variable 'superRegular'
-                    if (role == 'admin' && Location != username) // If Data Of Variable 'role' Is Equal To `admin` And Data Of Variable 'Location' Is Not Equal To `${username}`
+                    if ((role == 'admin') && (Location != username)) // If Data Of Variable 'role' Is Equal To `admin` And Data Of Variable 'Location' Is Not Equal To `${username}`
                     {
-                        content = admin; // Will Get The Data From Variable 'admin' And Set It To Variable 'content'
+                        content = admin.replaceAll('{roomId}', roomId) // Will Replace All The '{roomId}' In Variable 'admin' To Variable 'roomId' (If Any) And Store It In A Variable 'content'
+                                       .replaceAll('{Location}', Location) // Will Replace All The '{Location}' In Variable 'admin' To Variable 'Location' (If Any) And Store It In A Variable 'content'
+                                       .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'admin' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                       .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'admin' To Variable 'username' (If Any) And Store It In A Variable 'content'
                     }
-                    else if (role == 'regular' && Location != username) // If Data Of Variable 'role' Is Equal To `regular` And Data Of Variable 'Location' Is Not Equal To `${username}`
+                    else if ((role == 'regular') && (Location != username)) // If Data Of Variable 'role' Is Equal To `regular` And Data Of Variable 'Location' Is Not Equal To `${username}`
                     {
-                        content = regular; // Will Get The Data From Variable 'regular' And Set It To Variable 'content'
+                        content = regular.replaceAll('{roomId}', roomId) // Will Replace All The '{roomId}' In Variable 'regular' To Variable 'roomId' (If Any) And Store It In A Variable 'content'
+                                         .replaceAll('{Location}', Location) // Will Replace All The '{Location}' In Variable 'regular' To Variable 'Location' (If Any) And Store It In A Variable 'content'
+                                         .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'regular' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                         .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'regular' To Variable 'username' (If Any) And Store It In A Variable 'content'
                     }
-                    else if (role == 'admin' && Location == username) // If Data Of Variable 'role' Is Equal To `admin` And Data Of Variable 'Location' Is Equal To `${username}`
+                    else if ((role == 'admin') && (Location == username)) // If Data Of Variable 'role' Is Equal To `admin` And Data Of Variable 'Location' Is Equal To `${username}`
                     {
-                        content = superAdmin; // Will Get The Data From Variable 'superAdmin' And Set It To Variable 'content'
+                        content = superAdmin.replaceAll('{roomId}', roomId) // Will Replace All The '{roomId}' In Variable 'superAdmin' To Variable 'roomId' (If Any) And Store It In A Variable 'content'
+                                            .replaceAll('{Location}', Location) // Will Replace All The '{Location}' In Variable 'superAdmin' To Variable 'Location' (If Any) And Store It In A Variable 'content'
+                                            .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'superAdmin' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                            .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'superAdmin' To Variable 'username' (If Any) And Store It In A Variable 'content'
                     }
-                    else if (role == 'regular' && Location == username) // If Data Of Variable 'role' Is Equal To `regular` And Data Of Variable 'Location' Is Equal To `${username}`
+                    else if ((role == 'regular') && (Location == username)) // If Data Of Variable 'role' Is Equal To `regular` And Data Of Variable 'Location' Is Equal To `${username}`
                     {
-                        content = superRegular; // Will Get The Data From Variable 'superRegular' And Set It To Variable 'content'
+                        content = superRegular.replaceAll('{roomId}', roomId) // Will Replace All The '{roomId}' In Variable 'superRegular' To Variable 'roomId' (If Any) And Store It In A Variable 'content'
+                                              .replaceAll('{Location}', Location) // Will Replace All The '{Location}' In Variable 'superRegular' To Variable 'Location' (If Any) And Store It In A Variable 'content'
+                                              .replaceAll('{name}', name) // Will Replace All The '{name}' In Variable 'superRegular' To Variable 'name' (If Any) And Store It In A Variable 'content'
+                                              .replaceAll('{username}', username); // Will Replace All The '{username}' In Variable 'superRegular' To Variable 'username' (If Any) And Store It In A Variable 'content'
                     }
                     else // If Non Of These Conditions Matches 
                     {

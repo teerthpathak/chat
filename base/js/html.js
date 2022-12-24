@@ -179,5 +179,5 @@ var chatLeft // Variable 'chatLeft'
                 <p class="p">{message}</p> <!-- P With Class 'p' -->
                 <small class="small" id="small_{chatId}">{name} | {date} | {time}</small> <!-- SMALL With Class 'small' And Id 'small_{username}' -->
             </div> <!-- DIV With Class 'left' Ends -->
-            `
+        `
     ;

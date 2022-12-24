@@ -25,6 +25,12 @@
     border: 2px solid var(--veryDark);
     border-radius: 10px;
     padding: 5px;
+    box-shadow: 2px 2px 50px black;
+}
+
+.container:hover /* When Class 'container' Hovered */
+{
+    box-shadow: 2px 2px 70px black;
 }
 
 .input /* input */
@@ -35,6 +41,12 @@
     margin: 5px;
     border: 2px solid var(--veryDark);
     border-radius: 5px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.input:hover /* When Class 'input' Hovered */
+{
+    box-shadow: 1px 1px 5px black;
 }
 
 .btn  /* btn */
@@ -43,12 +55,14 @@
     margin: 5px 3px;
     padding: 3px;
     cursor: pointer;
+    box-shadow: 1px 1px 3px black;
 }
 
 .btn:hover /* When Class 'btn' Hovered */
 {
     background-color: var(--veryLight);
     border: 2px solid var(--veryLight);
+    box-shadow: 1px 1px 10px black;
 }
 
 /* Colors */

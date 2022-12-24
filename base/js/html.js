@@ -10,8 +10,7 @@ var head // Variable 'head'
             <link rel="shortcut icon" href="/chat/base/img/favicon.ico" type="image/x-icon"> <!-- LINK shortcut icon -->
             <link rel="stylesheet" href="/chat/base/css/index.css"> <!-- LINK stylesheet -->
             <link rel="stylesheet" href="/chat/base/css/utility.css"> <!-- LINK stylesheet -->
-            <link rel="stylesheet" href="${Location}css/index.css"
-            > <!-- LINK stylesheet -->
+            <link rel="stylesheet" href="${Location}css/index.css"> <!-- LINK stylesheet -->
         `
     ;
     
@@ -21,11 +20,6 @@ var header // Variable 'header'
             <nav id="navbar" class="navbarHeightResponsive"> <!-- NAVBAR With Id 'navbar' Starts -->
                 <div id="left"> <!-- DIV With Id 'left' Starts -->
                     <ul> <!-- UL Starts -->
-                        <li> <!-- LI Starts -->
-                            <a href="/chat/"> <!-- A Tag To Navigate To '/chat/' Starts -->
-                                <img src="/chat/base/img/light.png" alt="FC"> <!-- Image Tag With SRC '/chat/base/img/light.png' And ALT 'FC' -->
-                            </a> <!-- A Tag To Navigate To '/' Ends -->
-                        </li> <!-- LI Ends -->
                         <li> <!-- LI Starts -->
                             <h1> <!-- H1 Starts -->
                                 <a href="/chat/">Chat</a> <!-- A Tag To Navigate To '/chat/' -->
@@ -64,7 +58,6 @@ var main // Variable 'main'
 var footer // Variable 'footer'
     =
         `
-            <img src="/chat/base/img/light.png" alt="FC"> <!-- Image Tag With SRC '/chat/base/img/light.png' And ALT 'FC' -->
             <p> <!-- P Starts -->
                 Developed By: <a href="https://github.com/teerthpathak/" target="_blank">Teerth Pathak</a> <!-- A Tag To Navigate To 'https://github.com/teerthpathak/' In A New Tab -->
             </p> <!-- P Ends -->

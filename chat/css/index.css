@@ -15,6 +15,12 @@
     margin: 1% 20% 1% 0%;
     border: 2px solid var(--veryDark);
     border-radius: 5px;
+    box-shadow: 1px 1px 15px black;
+}
+
+.left:hover /* When Class 'left' Hovered */
+{
+    box-shadow: 1px 1px 30px black;
 }
 
 .right /* Class 'right' */
@@ -23,6 +29,12 @@
     margin: 1% 0% 1% 20%;
     border: 2px solid var(--veryDark);
     border-radius: 5px;
+    box-shadow: 1px 1px 15px black;
+}
+
+.right:hover /* When Class 'right' Hovered */
+{
+    box-shadow: 1px 1px 30px black;
 }
 
 .p /* Class 'p' (Mainly Used For Paragraphs) */
@@ -42,6 +54,12 @@
     border-radius: 7px;
     margin-left: 3px;
     cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+}
+
+.sub-btn:hover /* When Class 'sub-btn' Hovered */
+{
+    box-shadow: 1px 1px 10px black;
 }
 
 .br /* Edit In Utility Class 'br' From '/base/css/utility.css' */

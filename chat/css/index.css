@@ -1,14 +1,12 @@
+/* Utility Classes */
 .container /* Class 'container' */
 {
     width: 70vw;
     margin: 20px auto;
-    height: 65vh;
     padding: 20px;
-    overflow-y: auto;
     display: block;
 }
 
-/* Utility Classes */
 .left /* Class 'left' */
 {
     background-color: var(--veryLight);
@@ -62,6 +60,38 @@
     box-shadow: 1px 1px 10px black;
 }
 
+#openInPage{
+    display: grid;
+}
+
+#roomUtility > div, #roomUtility > div > span
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px 5%;
+}
+
+#edit_group_name, #add_user
+{
+    display: none;
+}
+
+#users table, #users table thead tr th, #tbody tr td
+{
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+#container
+{
+    height: 65vh;
+    overflow-y: auto;
+}
+
 .br /* Edit In Utility Class 'br' From '/base/css/utility.css' */
 {
     height: 55px !important;
@@ -82,6 +112,33 @@
 }
 
 /* CSS To Make The Page Responsive */
+@media only screen and (max-width: 1000px) /* Executed When Device Width Is '450px' Or Less */
+{
+    #roomUtility > div{
+        display: grid;
+    }
+
+    #roomUtility > div > span{
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+    
+    #roomUtility > div > span > span{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 650px) /* Executed When Device Width Is '450px' Or Less */
+{
+    #users table, #users table thead tr th, #tbody tr td
+    {
+        margin: 1px auto;
+        padding: 1px;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+}
+
 @media only screen and (max-width: 450px) /* Executed When Device Width Is '450px' Or Less */
 {
     .container /* Class 'container' */

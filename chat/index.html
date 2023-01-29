@@ -12,6 +12,45 @@
         <!-- Content -->
     </header> <!-- HEADER With Id 'header' Ends -->
     <main id="main"> <!-- MAIN With Id 'main' Starts -->
+        <div class="container" id="roomUtility"> <!-- DIV With Class 'container' And Id 'roomUtility' Starts -->
+            <div> <!-- DIV Starts -->
+                <span> <!-- Span Starts -->
+                    <p id="room_name"></p> <!-- P With Id 'room_name' -->
+                </span> <!-- Span Ends -->
+                <span> <!-- Span Starts -->
+                    <span id="edit_group_name"> <!-- SPAN With Id 'edit_group_name' Starts -->
+                        <input type="text" class="input" id="change_name"> <!-- INPUT With Type 'text', Class 'input' And Id 'change_name' -->
+                        <div><button class="btn dark" onclick="save_edited_room_name()">Save Changes</button></div> <!-- DIV With BUTTON With Class 'btn dark' And Onclick 'save_edited_room_name()' -->
+                    </span> <!-- SPAN With Id 'edit_group_name' Ends -->
+                    <button class="btn dark" id="show_edit_group_name_settings" onclick="show_edit_group_name_settings()">Edit Group Name</button> <!-- BUTTON With Class 'btn dark', Id 'show_edit_group_name_settings' And Onclick 'show_edit_group_name_settings();' -->
+                </span> <!-- Span Ends -->
+                <span> <!-- Span Starts -->
+                    <span id="add_user"> <!-- SPAN With Id 'add_user' Starts -->
+                        <label id="admin_label">Admin <input type="radio" name="role" id="admin_radio" value="admin"></label> <!-- Label With Id 'admin_label' And INPUT With Type 'radio', Name 'role', Id 'admin_radio' And Value 'admin' -->
+                        <label id="regular_label">Regular <input type="radio" name="role" id="regular_radio" value="regular"></label> <!-- Label With Id 'regular_label' And INPUT With Type 'radio', Name 'role', Id 'regular_radio' And Value 'regular' -->
+                        <div><input type="email" class="input" id='add_user_input' placeholder="Enter The Email"></div> <!-- DIV With INPUT With Type 'email', Class 'input', Id 'add_user_input' And Placeholder 'Enter The Email' -->
+                        <div><button class="btn dark" onclick="add_user()">Add User</button></div> <!-- DIV With BUTTON With Class 'btn primary' And Onclick 'add_user()' -->
+                    </span> <!-- SPAN With Id 'add_user' Ends -->
+                    <button class="btn dark" id="show_add_user_settings" onclick="show_add_user_settings()">Add User</button> <!-- BUTTON With Class 'btn dark', Id 'show_add_user_settings', And Onclick 'show_add_user_settings()' -->
+                </span> <!-- Span Ends -->
+                <span> <!-- Span Starts -->
+                    <button class="btn danger" id="exit_room" onclick="exit_room()">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_room' And Onclick 'exit_room()' -->
+                    <button class="btn danger" id="delete_room" onclick="delete_room()">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_room' And Onclick 'delete_room()' -->
+                </span> <!-- Span Ends -->
+            </div> <!-- DIV Ends -->
+        </div> <!-- DIV With Class 'container' And Id 'roomUtility' Ends -->
+        <div class="container" id="users">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
         <div id="container" class="container"> <!-- DIV With Id 'container' And Class 'container' Starts -->
             <!-- Content -->
         </div> <!-- DIV With Id 'container' And Class 'container' Ends -->

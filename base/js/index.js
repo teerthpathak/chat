@@ -4,11 +4,13 @@ function addScript() // Function Add Script - To Add Script
     if(Location == '/chat/') // If Variable Location Data Is Equal To '/chat/'
     {
         loadScript(`/chat/index/js/index.js`); // loadScript Call To Initialize - `/chat/index/js/index.js`
-        document.getElementById('head').innerHTML += indexStylesheet; // Adding Inner HTML From Variable 'indexStylesheet' In Element With Id 'head'
+        document.getElementById('stylesheet').href = "/chat/index/css/index.css"; // Adding Href In Element With Id 'stylesheet'
     }
     else // Else
     {
         loadScript(`${Location}js/index.js`); // loadScript Call To Initialize - `${Location}js/index.js`
+        document.getElementById('stylesheet').href = `${Location}css/index.css`; // Adding Href In Element With Id 'stylesheet'
+        localStorage.setItem("page", Location); // Will Set Item 'page' From Variable 'Location'
     }
 }
 addScript(); // Function Add Script Call

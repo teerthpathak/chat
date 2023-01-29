@@ -3,11 +3,30 @@
 {
     margin: 10px 30%;
     box-shadow: 2px 2px 15px black;
+    padding: 15px;
 }
 
 .p /* Class 'p' */
 {
     font-size: 20px;
+}
+
+#main /* Id 'main' */
+{
+    display: flex;
+}
+
+.left, .right /* Class 'left, right' */
+{
+    display: inline-block;
+    width: 50vw;
+    height: 86vh;
+    overflow: auto;
+}
+
+.left /* Class 'left' */
+{
+    border-right: 1px solid var(--veryDark);
 }
 
 #createChatRoomDiv /* Id 'createChatRoomDiv' */
@@ -18,6 +37,40 @@
     align-items: center;
 }
 
+#createChatRoomContainer, #output > div /* Id 'createChatRoomContainer, output > div' */
+{
+    width: 45vw;
+    margin: 10px auto;
+}
+
+.sideChat /* Class 'sideChat' */
+{
+    display: block;
+}
+
+.chatPage /* Class 'chatPage' */
+{
+    display: none;
+}
+
+.right /* Class 'right' */
+{
+    border-left: 1px solid var(--veryDark);
+}
+
+#openInPage{
+    display: none;
+    height: 5vh;
+}
+
+.right > iframe /* Class 'right > iframe' */
+{
+    width: 49.5vw;
+    height: 80vh;
+    border: none;
+    display: none;
+}
+
 @media only screen and (max-width: 1270px) /* Executed When Device Width Is '1270px' Or Less */
 {
     .container /* Class 'container' */
@@ -26,11 +79,41 @@
     }
 }
 
+@media only screen and (max-width: 750px) /* Executed When Device Width Is '750px' Or Less */
+{
+    .left /* Class 'left' */
+    {
+        width: 100vw;
+        border: none;
+    }
+
+    #createChatRoomContainer, #output > div /* Id 'createChatRoomContainer, output > div' */
+    {
+        width: 95vw;
+    }
+
+    .sideChat /* Class 'sideChat' */
+    {
+        display: none;
+    }
+    
+    .chatPage /* Class 'chatPage' */
+    {
+        display: block;
+    }
+
+    .right /* Class 'right' */
+    {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 860px) /* Executed When Device Width Is '860px' Or Less */
 {
     .container /* Class 'container' */
     {
         margin: 10px 3%;
+        padding: 5px;
     }
 }
 

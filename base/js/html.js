@@ -10,7 +10,7 @@ var head // Variable 'head'
             <link rel="shortcut icon" href="/chat/base/img/favicon.ico" type="image/x-icon"> <!-- LINK shortcut icon -->
             <link rel="stylesheet" href="/chat/base/css/index.css"> <!-- LINK stylesheet -->
             <link rel="stylesheet" href="/chat/base/css/utility.css"> <!-- LINK stylesheet -->
-            <link rel="stylesheet" href="${Location}css/index.css"> <!-- LINK stylesheet -->
+            <link rel="stylesheet" id="stylesheet"> <!-- LINK stylesheet -->
         `
     ;
     
@@ -64,113 +64,35 @@ var footer // Variable 'footer'
         `
     ;
 
-var indexStylesheet // Variable 'indexStylesheet'
+var room // Variable 'room'
     =
         `
-            <link rel="stylesheet" href="/chat/index/css/index.css"> <!-- LINK stylesheet -->
+            <div class="container sideChat" onclick="sideChat('{roomId}', '{roomLocation}')"> <!-- DIV With Class 'container, sideChat' And Onclick "sideChat('{roomId}', '{roomLocation}')" Starts -->
+                <p class='p'>{name}</p> <!-- P With Class 'p' -->
+            </div> <!-- DIV With Class 'container, sideChat' And Onclick "sideChat('{roomId}', '{roomLocation}')" Ends -->
+            <div class="container chatPage" onclick="chatPage('{roomId}', '{roomLocation}')"> <!-- DIV With Class 'container, chatPage' And Onclick "chatPage('{roomId}', '{roomLocation}')" Starts -->
+                <p class='p'>{name}</p> <!-- P With Class 'p' -->
+            </div> <!-- DIV With Class 'container, chatPage' And Onclick "chatPage('{roomId}', '{roomLocation}')" Ends -->
         `
     ;
 
-var admin // Variable 'admin'
+var user // Variable 'user'
     =
         `
-            <div class="container" id="container_{roomId}"> <!-- DIV With Class 'container' And Id 'container_{roomId}' Starts -->
-                <div class="top" id="top_{roomId}"> <!-- DIV With Class 'top' And Id 'top_{roomId}' Starts -->
-                    <input type="text" class="input" id="change_name_{roomId}" value="{name}" style="display: none;"> <!-- INPUT With Type 'text', Class 'input', Id 'change_name_{roomId}', Value '{name}' And Style 'display: none;' -->
-                    <button class="btn dark" id="save_{roomId}" style="display: none;" onclick="save_edited_room_name('{roomId}')">Save Changes</button> <!-- BUTTON With Class 'btn dark', Id 'save_{roomId}', Style 'display: none;' And Onclick 'save_edited_room_name('{roomId}')' -->
-                    <p id="{roomId}_p" class='p' style="display: unset;">{name}</p> <!-- P With Id '{roomId}_p', Class 'p' And Style 'display: unset;' -->
-                </div> <!-- DIV With Class 'top' And Id 'top_{roomId}' Ends -->
-                <div class="middle" id="middle_{roomId}"> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Starts -->
-                    <button class="btn success" id="open_{roomId}" onclick="open_chat('{roomId}', '{Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_{roomId}', Style 'display: none;' And Onclick 'open_chat('{roomId}', '{Location}')' -->
-                    <label for="admin" style="display: none;" id="admin_label_{roomId}">Admin <input type="radio" name="role" id="admin_radio_{roomId}" value="admin"></label> <!-- Label With For 'admin', Style 'display: none;', Id 'admin_label_{roomId}' And INPUT With Type 'radio', Name 'role', Id 'admin_radio_{roomId}', Value 'admin' -->
-                    <label for="regular" style="display: none;" id="regular_label_{roomId}">Regular <input type="radio" name="role" id="regular_radio_{roomId}" value="regular"></label> <!-- Label With For 'regular', Style 'display: none;', Id 'regular_label_{roomId}' And INPUT With Type 'radio', Name 'role', Id 'regular_radio_{roomId}', Value 'regular' -->
-                    <input type="email" class="input" id='add_user_input_{roomId}' placeholder="Enter The Email" style="display: none;"> <!-- INPUT With Type 'email', Class 'input', Id 'add_user_input_{roomId}', Placeholder 'Enter The Email' And Style 'display: none;' -->
-                    <button class="btn primary" id="add_user_{roomId}" onclick="add_user('{Location}', '{roomId}')" style="display: none;">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'add_user_{roomId}', Style 'display: none;' And Onclick 'add_user('{Location}', '{roomId}')' -->
-                </div> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Ends -->
-                <div class="bottom" id="bottom_{roomId}"> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Starts -->
-                    <button class="btn primary" id="show_add_user_{roomId}" onclick="show_add_user_settings('{roomId}')">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'show_add_user_{roomId}', And Onclick 'show_add_user_settings('{roomId}')' -->
-                    <button class="btn warning" id="show_edit_group_name_settings_{roomId}" onclick="show_edit_group_name_settings('{roomId}');">Edit Group Name</button> <!-- BUTTON With Class 'btn warning', Id 'show_edit_group_name_settings_{roomId}' And Onclick 'show_edit_group_name_settings('{roomId}');' -->
-                    <button class="btn danger" id="exit_{roomId}" onclick="exit_room('{Location}', '{roomId}', '{username}')">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_{roomId}' And Onclick 'exit_room('{Location}', '{roomId}', '{username}')' -->
-                </div> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Ends -->
-            </div> <!-- DIV With Class 'container' And Id 'container_{roomId}' Ends -->
-        `
-    ;
-
-var regular // Variable 'regular'
-    =
-       `
-            <div class="container" id="container_{roomId}"> <!-- DIV With Class 'container' And Id 'container_{roomId}' Starts -->
-                <div class="top" id="top_{roomId}"> <!-- DIV With Class 'top' And Id 'top_{roomId}' Starts -->
-                    <p id="{roomId}_p" class='p' style="display: unset;">{name}</p> <!-- P With Id '{roomId}_p', Class 'p' And Style 'display: unset;' -->
-                </div> <!-- DIV With Class 'top' And Id 'top_{roomId}' Ends -->
-                <div class="middle" id="middle_{roomId}"> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Starts -->
-                    <button class="btn success" id="open_{roomId}" onclick="open_chat('{roomId}', '{Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_{roomId}', Style 'display: none;' And Onclick 'open_chat('{roomId}', '{Location}')' -->
-                </div> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Ends -->
-                <div class="bottom" id="bottom_{roomId}"> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Starts -->
-                    <button class="btn danger" id="exit_{roomId}" onclick="exit_room('{Location}', '{roomId}', '{username}')">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_{roomId}' And Onclick 'exit_room('{Location}', '{roomId}', '{username}')' -->
-                </div> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Ends -->
-            </div> <!-- DIV With Class 'container' And Id 'container_{roomId}' Ends -->
-       `
-    ;
-
-var superAdmin // Variable 'superAdmin'
-    =
-        `
-            <div class="container" id="container_{roomId}"> <!-- DIV With Class 'container' And Id 'container_{roomId}' Starts -->
-                <div class="top" id="top_{roomId}"> <!-- DIV With Class 'top' And Id 'top_{roomId}' Starts -->
-                    <input type="text" class="input" id="change_name_{roomId}" value="{name}" style="display: none;"> <!-- INPUT With Type 'text', Class 'input', Id 'change_name_{roomId}', Value '{name}' And Style 'display: none;' -->
-                    <button class="btn dark" id="save_{roomId}" style="display: none;" onclick="save_edited_room_name('{roomId}')">Save Changes</button> <!-- BUTTON With Class 'btn dark', Id 'save_{roomId}', Style 'display: none;' And Onclick 'save_edited_room_name('{roomId}')' -->
-                    <p id="{roomId}_p" class='p' style="display: unset;">{name}</p> <!-- P With Id '{roomId}_p', Class 'p' And Style 'display: unset;' -->
-                </div> <!-- DIV With Class 'top' And Id 'top_{roomId}' Ends -->
-                <div class="middle" id="middle_{roomId}"> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Starts -->
-                    <button class="btn success" id="open_{roomId}" onclick="open_chat('{roomId}', '{Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_{roomId}', Style 'display: none;' And Onclick 'open_chat('{roomId}', '{Location}')' -->
-                    <label for="admin" style="display: none;" id="admin_label_{roomId}">Admin <input type="radio" name="role" id="admin_radio_{roomId}" value="admin"></label> <!-- Label With For 'admin', Style 'display: none;', Id 'admin_label_{roomId}' And INPUT With Type 'radio', Name 'role', Id 'admin_radio_{roomId}', Value 'admin' -->
-                    <label for="regular" style="display: none;" id="regular_label_{roomId}">Regular <input type="radio" name="role" id="regular_radio_{roomId}" value="regular"></label> <!-- Label With For 'regular', Style 'display: none;', Id 'regular_label_{roomId}' And INPUT With Type 'radio', Name 'role', Id 'regular_radio_{roomId}', Value 'regular' -->
-                    <input type="email" class="input" id='add_user_input_{roomId}' placeholder="Enter The Email" style="display: none;"> <!-- INPUT With Type 'email', Class 'input', Id 'add_user_input_{roomId}', Placeholder 'Enter The Email' And Style 'display: none;' -->
-                    <button class="btn primary" id="add_user_{roomId}" onclick="add_user('{Location}', '{roomId}')" style="display: none;">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'add_user_{roomId}', Style 'display: none;' And Onclick 'add_user('{Location}', '{roomId}')' -->
-                </div> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Ends -->
-                <div class="bottom" id="bottom_{roomId}"> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Starts -->
-                    <button class="btn primary" id="show_add_user_{roomId}" onclick="show_add_user_settings('{roomId}')">Add User</button> <!-- BUTTON With Class 'btn primary', Id 'show_add_user_{roomId}', And Onclick 'show_add_user_settings('{roomId}')' -->
-                    <button class="btn warning" id="show_edit_group_name_settings_{roomId}" onclick="show_edit_group_name_settings('{roomId}');">Edit Group Name</button> <!-- BUTTON With Class 'btn warning', Id 'show_edit_group_name_settings_{roomId}' And Onclick 'show_edit_group_name_settings('{roomId}');' -->
-                    <button class="btn danger" id="delete_{roomId}" onclick="delete_room('{Location}', '{roomId}')">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_{roomId}' And Onclick 'delete_room('{Location}', '{roomId}')' -->
-                </div> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Ends -->
-            </div> <!-- DIV With Class 'container' And Id 'container_{roomId}' Ends -->
-        `
-    ;
-
-var superRegular // Variable 'superRegular'
-    =
-        `
-            <div class="container" id="container_{roomId}"> <!-- DIV With Class 'container' And Id 'container_{roomId}' Starts -->
-                <div class="top" id="top_{roomId}"> <!-- DIV With Class 'top' And Id 'top_{roomId}' Starts -->
-                    <p id="{roomId}_p" class='p' style="display: unset;">{name}</p> <!-- P With Id '{roomId}_p', Class 'p' And Style 'display: unset;' -->
-                </div> <!-- DIV With Class 'top' And Id 'top_{roomId}' Ends -->
-                <div class="middle" id="middle_{roomId}"> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Starts -->
-                    <button class="btn success" id="open_{roomId}" onclick="open_chat('{roomId}', '{Location}')">Open Chat</button> <!-- BUTTON With Class 'btn success', Id 'open_{roomId}', Style 'display: none;' And Onclick 'open_chat('{roomId}', '{Location}')' -->
-                </div> <!-- DIV With Class 'middle' And Id 'middle_{roomId}' Ends -->
-                <div class="bottom" id="bottom_{roomId}"> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Starts -->
-                    <button class="btn danger" id="delete_{roomId}" onclick="delete_room('{Location}', '{roomId}')">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_{roomId}' And Onclick 'delete_room('{Location}', '{roomId}')' -->
-                </div> <!-- DIV With Class 'bottom' And Id 'bottom_{roomId}' Ends -->
-            </div> <!-- DIV With Class 'container' And Id 'container_{roomId}' Ends -->
+            <tr>
+                <td>{name}</td>
+                <td>{role}</td>
+                <td>{email}</td>
+            </tr>
         `
     ;
   
-var chatRight // Variable 'chatRight'
+var chat // Variable 'chat'
     =
         `
-            <div class="right"> <!-- DIV With Class 'right' Starts -->
+            <div class="{align}"> <!-- DIV With Class 'right' Starts -->
                 <p class="p">{message}</p> <!-- P With Class 'p' -->
-                <small class="small" id="small_{chatId}">{name} | {date} | {time} <button class='sub-btn danger' onclick="delete_message('{chatId}')">&times;</button></small> <!-- SMALL With Class 'small', Id 'small_{username}' And BUTTON Class 'sub-btn danger' And Onclick 'delete_message('{chatId}')' -->
+                <small class="small" id="small_{chatId}">{name} | {date} | {time} <button class='sub-btn danger' id="{chatId}_delete_message_button" onclick="delete_message('{chatId}')">&times;</button></small> <!-- SMALL With Class 'small', Id 'small_{username}' And BUTTON Class 'sub-btn danger' And Onclick 'delete_message('{chatId}')' -->
             </div> <!-- DIV With Class 'right' Ends -->
-        `
-    ;
-
-var chatLeft // Variable 'chatLeft'
-    =
-        `
-            <div class="left"> <!-- DIV With Class 'left' Starts -->
-                <p class="p">{message}</p> <!-- P With Class 'p' -->
-                <small class="small" id="small_{chatId}">{name} | {date} | {time}</small> <!-- SMALL With Class 'small' And Id 'small_{username}' -->
-            </div> <!-- DIV With Class 'left' Ends -->
         `
     ;

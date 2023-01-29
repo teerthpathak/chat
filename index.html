@@ -12,8 +12,9 @@
         <!-- Content -->
     </header> <!-- HEADER With Id 'header' Ends -->
     <main id="main"> <!-- MAIN With Id 'main' Starts -->
-        <div class="container"> <!-- DIV With Class 'container' Starts -->
-            <button class="btn dark" id="openCreateChatRoomSettingsButton" onclick="openCreateChatRoomSettings()">Create Your Own Chat Room</button> <!-- BUTTON With Class 'btn, dark', Id 'openCreateChatRoomSettingsButton' And Onclick 'redirectToCreateChatRoomPage()' -->
+        <div class="left"> <!-- DIV With Class 'left' Starts -->
+            <div class="container" id="createChatRoomContainer"> <!-- DIV With Class 'container' And Id 'createChatRoomContainer' Starts -->
+                <button class="btn dark" id="openCreateChatRoomSettingsButton" onclick="openCreateChatRoomSettings()">Create Your Own Chat Room</button> <!-- BUTTON With Class 'btn, dark', Id 'openCreateChatRoomSettingsButton' And Onclick 'redirectToCreateChatRoomPage()' -->
             <div id="createChatRoomDiv"> <!-- DIV With Id 'createChatRoomDiv' Starts -->
                 <div class="top"> <!-- DIV With Class 'top' Starts -->
                     <input type="text" name="room_name" class="input" id="room_name" placeholder="Enter Your Room Name"> <!-- INPUT With TYPE 'text', NAME ''room_name', CLASS 'input', ID 'room_name' And PLACEHOLDER 'Enter Your Room Name' -->
@@ -25,10 +26,17 @@
                     <small class="small" id="message"></small> <!-- SMALL With Class 'small' And Id 'Message' -->
                 </div> <!-- DIV With Class 'bottom' Ends -->
             </div> <!-- DIV With Id 'createChatRoomDiv' Ends -->
-        </div> <!-- DIV With Class 'container' Ends -->
+        </div> <!-- DIV With Class 'container' And Id 'createChatRoomContainer' Ends -->
         <div id="output"> <!-- DIV With Id 'output' Starts -->
             <!-- Content -->
         </div> <!-- DIV With Id 'output' Ends -->
+    </div> <!-- DIV With Class 'left' Ends -->
+    <div class="right"> <!-- DIV With Class 'right' Starts -->
+        <div id="openInPage" onclick="redirect('!=', roomId, 'chat');">
+            <button class="btn dark">Open In Page</button>
+        </div>
+        <iframe id="iframe"></iframe> <!-- Iframe With Id 'iframe' -->
+    </div> <!-- DIV With Class 'right' Ends -->
     </main> <!-- MAIN With Id 'main' Ends -->
     <footer id="footer"> <!-- FOOTER With Id 'footer' Starts -->
         <!-- Content -->

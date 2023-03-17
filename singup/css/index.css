@@ -1,4 +1,3 @@
-/* CLASS 'container' */
 .container
 {
     margin: 5% 35%;
@@ -10,46 +9,45 @@
     font-size: 20px;
 }
 
-#message /* ID 'message' */
+#message
 {
     display: none;
 }
 
-@media only screen and (max-width: 940px) /* Executed When Device Width Is '940px' Or Less */
+@media only screen and (max-width: 940px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5% 25%;
     }
 }
 
-@media only screen and (max-width: 570px) /* Executed When Device Width Is '570px' Or Less */
+@media only screen and (max-width: 570px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5% 15%;
     }
 }
 
-@media only screen and (max-width: 410px) /* Executed When Device Width Is '410px' Or Less */
+@media only screen and (max-width: 410px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5%;
     }
 }
 
-@media only screen and (max-width: 315px) /* Executed When Device Width Is '315px' Or Less */
+@media only screen and (max-width: 315px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5% 3%;
     }
 }
 
-@media only screen and (max-width: 300px) /* Executed When Device Width Is '300px' Or Less */
+@media only screen and (max-width: 300px)
 {
-    /* CLASS 'container' */
     .container
     {
         margin: 1%;

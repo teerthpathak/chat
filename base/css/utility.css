@@ -1,4 +1,4 @@
-.hr /* To Be Used Instead Of 'hr' Tag */
+.hr
 {
     width: 98%;
     margin: 0% 1%;
@@ -7,15 +7,14 @@
     color: transparent;
 }
 
-.br /* To Be Used Instead Of 'br' Tag */
+.br
 {
     color: transparent;
     background-color: transparent;
     height: 30px;
 }
 
-/* Utility Classes */
-.container /* container */
+.container
 {
     background-color: var(--veryLight);
     display: flex;
@@ -28,12 +27,12 @@
     box-shadow: 2px 2px 50px black;
 }
 
-.container:hover /* When Class 'container' Hovered */
+.container:hover
 {
     box-shadow: 2px 2px 70px black;
 }
 
-.input /* input */
+.input
 {
     width: 160px;
     height: 15px;
@@ -44,12 +43,12 @@
     box-shadow: 1px 1px 3px black;
 }
 
-.input:hover /* When Class 'input' Hovered */
+.input:hover
 {
     box-shadow: 1px 1px 5px black;
 }
 
-.btn  /* btn */
+.btn 
 {
     border-radius: 3px;
     margin: 5px 3px;
@@ -58,74 +57,73 @@
     box-shadow: 1px 1px 3px black;
 }
 
-.btn:hover /* When Class 'btn' Hovered */
+.btn:hover
 {
     background-color: var(--veryLight);
     border: 2px solid var(--veryLight);
     box-shadow: 1px 1px 10px black;
 }
 
-/* Colors */
-.danger /* Shade Of 'red' */
+.danger
 {
     background-color: var(--danger);
     color: var(--veryLight);
     border: 2px solid var(--danger);
 }
 
-.danger:hover /* When Class 'danger' Hovered */
+.danger:hover
 {
     background-color: var(--higherDanger);
     border: 2px solid var(--higherDanger);
 }
 
-.success /* Shade Of 'green' */
+.success
 {
     background-color: var(--success);
     color: var(--veryLight);
     border: 2px solid var(--success);
 }
 
-.success:hover /* When Class 'success' Hovered */
+.success:hover
 {
     background-color: var(--greatSuccess);
     border: 2px solid var(--greatSuccess);
 }
 
-.primary /* Shade Of 'blue' */
+.primary
 {
     background-color: var(--primary);
     color: var(--veryLight);
     border: 2px solid var(--primary);
 }
 
-.primary:hover /* When Class 'primary' Hovered */
+.primary:hover
 {
     background-color: var(--bestPrimary);
     border: 2px solid var(--bestPrimary);
 }
 
-.dark /* Shade Of 'black' */
+.dark
 {
     background-color: var(--dark);
     color: var(--veryLight);
     border: 2px solid var(--dark);
 }
 
-.dark:hover /* When Class 'dark' Hovered */
+.dark:hover
 {
     background-color: var(--veryDark);
     border: 2px solid var(--veryDark);
 }
 
-.warning /* Shade Of 'orange' */
+.warning
 {
     background-color: var(--warning);
     color: var(--veryLight);
     border: 2px solid var(--warning);
 }
 
-.warning:hover /* When Class 'warning' Hovered */
+.warning:hover
 {
     background-color: var(--greaterWarning);
     border: 2px solid var(--greaterWarning);

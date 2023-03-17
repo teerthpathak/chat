@@ -1,46 +1,38 @@
-<!-- This Code Is Inherited From '/base/index.html' -->
-<!DOCTYPE html> <!-- Document Type HTML -->
-<html lang="en" id="html"> <!-- HTML With Id 'html' Starts -->
+<!DOCTYPE html>
+<html lang="en" id="html">
 
-<head id="head"> <!-- HEAD With Id 'head' Starts -->
-    <title id="title">Home</title> <!-- TITLE With Id 'title' -->
-    <!-- Content -->
-</head> <!-- HEAD With Id 'head' Ends -->
+<head id="head">
+    <title id="title">Home</title>
+</head>
 
-<body id="body"> <!-- BODY With Id 'body' Starts -->
-    <header id="header"> <!-- HEADER With Id 'header' Starts -->
-        <!-- Content -->
-    </header> <!-- HEADER With Id 'header' Ends -->
-    <main id="main"> <!-- MAIN With Id 'main' Starts -->
-        <div class="left"> <!-- DIV With Class 'left' Starts -->
-            <div class="container" id="createChatRoomContainer"> <!-- DIV With Class 'container' And Id 'createChatRoomContainer' Starts -->
-                <button class="btn dark" id="openCreateChatRoomSettingsButton" onclick="openCreateChatRoomSettings()">Create Your Own Chat Room</button> <!-- BUTTON With Class 'btn, dark', Id 'openCreateChatRoomSettingsButton' And Onclick 'redirectToCreateChatRoomPage()' -->
-            <div id="createChatRoomDiv"> <!-- DIV With Id 'createChatRoomDiv' Starts -->
-                <div class="top"> <!-- DIV With Class 'top' Starts -->
-                    <input type="text" name="room_name" class="input" id="room_name" placeholder="Enter Your Room Name"> <!-- INPUT With TYPE 'text', NAME ''room_name', CLASS 'input', ID 'room_name' And PLACEHOLDER 'Enter Your Room Name' -->
-                </div> <!-- DIV With Class 'top' Ends -->
-                <div class="middle"> <!-- DIV With Class 'middle' Starts -->
-                    <button class="btn dark" id="createChatRoom" onclick="createChatRoom()">Create Chat Room</button> <!-- BUTTON With Class 'btn, dark', Id 'createChatRoom' And Onclick 'createChatRoom()' -->
-                </div> <!-- DIV With Class 'middle' Ends -->
-                <div class="bottom"> <!-- DIV With Class 'bottom' Starts -->
-                    <small class="small" id="message"></small> <!-- SMALL With Class 'small' And Id 'Message' -->
-                </div> <!-- DIV With Class 'bottom' Ends -->
-            </div> <!-- DIV With Id 'createChatRoomDiv' Ends -->
-        </div> <!-- DIV With Class 'container' And Id 'createChatRoomContainer' Ends -->
-        <div id="output"> <!-- DIV With Id 'output' Starts -->
-            <!-- Content -->
-        </div> <!-- DIV With Id 'output' Ends -->
-    </div> <!-- DIV With Class 'left' Ends -->
-    <div class="right"> <!-- DIV With Class 'right' Starts -->
+<body id="body">
+    <header id="header"></header> 
+    <main id="main">
+        <div class="left">
+            <div class="container" id="createChatRoomContainer">
+                <button class="btn dark" id="openCreateChatRoomSettingsButton" onclick="openCreateChatRoomSettings()">Create Your Own Chat Room</button>
+            <div id="createChatRoomDiv">
+                <div class="top">
+                    <input type="text" name="room_name" class="input" id="room_name" placeholder="Enter Your Room Name">
+                </div>
+                <div class="middle">
+                    <button class="btn dark" id="createChatRoom" onclick="createChatRoom()">Create Chat Room</button>
+                </div>
+                <div class="bottom">
+                    <small class="small" id="message"></small>
+                </div>
+            </div>
+        </div>
+        <div id="output"></div>
+    </div>
+    <div class="right"> 
         <div id="openInPage" onclick="redirect('!=', roomId, 'chat');">
             <button class="btn dark">Open In Page</button>
         </div>
-        <iframe id="iframe"></iframe> <!-- Iframe With Id 'iframe' -->
-    </div> <!-- DIV With Class 'right' Ends -->
-    </main> <!-- MAIN With Id 'main' Ends -->
-    <footer id="footer"> <!-- FOOTER With Id 'footer' Starts -->
-        <!-- Content -->
-    </footer> <!-- FOOTER With Id 'footer' Ends -->
-    <script src="/chat/base/js/utility.js"></script> <!-- Script With SRC '/chat/base/js/utility.js' -->
-</body> <!-- BODY With Id 'body' Ends -->
-</html> <!-- HTML With Id 'html' Ends -->
+        <iframe id="iframe"></iframe>
+    </div>
+    </main>
+    <footer id="footer"> </footer>
+    <script src="/chat/base/js/utility.js"></script>
+</body>
+</html>

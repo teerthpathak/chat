@@ -1,44 +1,40 @@
-<!-- This Code Is Inherited From '/base/index.html' -->
-<!DOCTYPE html> <!-- Document Type HTML -->
-<html lang="en" id="html"> <!-- HTML With Id 'html' Starts -->
+<!DOCTYPE html>
+<html lang="en" id="html">
 
-<head id="head"> <!-- HEAD With Id 'head' Starts -->
-    <title id="title">Chat</title> <!-- TITLE With Id 'title' -->
-    <!-- Content -->
-</head> <!-- HEAD With Id 'head' Ends -->
+<head id="head">
+    <title id="title">Chat</title>
+</head>
 
-<body id="body"> <!-- BODY With Id 'body' Starts -->
-    <header id="header"> <!-- HEADER With Id 'header' Starts -->
-        <!-- Content -->
-    </header> <!-- HEADER With Id 'header' Ends -->
-    <main id="main"> <!-- MAIN With Id 'main' Starts -->
-        <div class="container" id="roomUtility"> <!-- DIV With Class 'container' And Id 'roomUtility' Starts -->
-            <div> <!-- DIV Starts -->
-                <span> <!-- Span Starts -->
-                    <p id="room_name"></p> <!-- P With Id 'room_name' -->
-                </span> <!-- Span Ends -->
-                <span> <!-- Span Starts -->
-                    <span id="edit_group_name"> <!-- SPAN With Id 'edit_group_name' Starts -->
-                        <input type="text" class="input" id="change_name"> <!-- INPUT With Type 'text', Class 'input' And Id 'change_name' -->
-                        <div><button class="btn dark" onclick="save_edited_room_name()">Save Changes</button></div> <!-- DIV With BUTTON With Class 'btn dark' And Onclick 'save_edited_room_name()' -->
-                    </span> <!-- SPAN With Id 'edit_group_name' Ends -->
-                    <button class="btn dark" id="show_edit_group_name_settings" onclick="show_edit_group_name_settings()">Edit Group Name</button> <!-- BUTTON With Class 'btn dark', Id 'show_edit_group_name_settings' And Onclick 'show_edit_group_name_settings();' -->
-                </span> <!-- Span Ends -->
-                <span> <!-- Span Starts -->
-                    <span id="add_user"> <!-- SPAN With Id 'add_user' Starts -->
-                        <label id="admin_label">Admin <input type="radio" name="role" id="admin_radio" value="admin"></label> <!-- Label With Id 'admin_label' And INPUT With Type 'radio', Name 'role', Id 'admin_radio' And Value 'admin' -->
-                        <label id="regular_label">Regular <input type="radio" name="role" id="regular_radio" value="regular"></label> <!-- Label With Id 'regular_label' And INPUT With Type 'radio', Name 'role', Id 'regular_radio' And Value 'regular' -->
-                        <div><input type="email" class="input" id='add_user_input' placeholder="Enter The Email"></div> <!-- DIV With INPUT With Type 'email', Class 'input', Id 'add_user_input' And Placeholder 'Enter The Email' -->
-                        <div><button class="btn dark" onclick="add_user()">Add User</button></div> <!-- DIV With BUTTON With Class 'btn primary' And Onclick 'add_user()' -->
-                    </span> <!-- SPAN With Id 'add_user' Ends -->
-                    <button class="btn dark" id="show_add_user_settings" onclick="show_add_user_settings()">Add User</button> <!-- BUTTON With Class 'btn dark', Id 'show_add_user_settings', And Onclick 'show_add_user_settings()' -->
-                </span> <!-- Span Ends -->
-                <span> <!-- Span Starts -->
-                    <button class="btn danger" id="exit_room" onclick="exit_room()">Exit Room</button> <!-- BUTTON With Class 'btn danger', Id 'exit_room' And Onclick 'exit_room()' -->
-                    <button class="btn danger" id="delete_room" onclick="delete_room()">Delete Room</button> <!-- BUTTON With Class 'btn danger', Id 'delete_room' And Onclick 'delete_room()' -->
-                </span> <!-- Span Ends -->
-            </div> <!-- DIV Ends -->
-        </div> <!-- DIV With Class 'container' And Id 'roomUtility' Ends -->
+<body id="body">
+    <header id="header"></header>
+    <main id="main">
+        <div class="container" id="roomUtility">
+            <div>
+                <span>
+                    <p id="room_name"></p>
+                </span>
+                <span>
+                    <span id="edit_group_name">
+                        <input type="text" class="input" id="change_name">
+                        <div><button class="btn dark" onclick="save_edited_room_name()">Save Changes</button></div>
+                    </span>
+                    <button class="btn dark" id="show_edit_group_name_settings" onclick="show_edit_group_name_settings()">Edit Group Name</button>
+                </span>
+                <span>
+                    <span id="add_user">
+                        <label id="admin_label">Admin <input type="radio" name="role" id="admin_radio" value="admin"></label>
+                        <label id="regular_label">Regular <input type="radio" name="role" id="regular_radio" value="regular"></label>
+                        <div><input type="email" class="input" id='add_user_input' placeholder="Enter The Email"></div>
+                        <div><button class="btn dark" onclick="add_user()">Add User</button></div>
+                    </span>
+                    <button class="btn dark" id="show_add_user_settings" onclick="show_add_user_settings()">Add User</button>
+                </span>
+                <span>
+                    <button class="btn danger" id="exit_room" onclick="exit_room()">Exit Room</button>
+                    <button class="btn danger" id="delete_room" onclick="delete_room()">Delete Room</button>
+                </span>
+            </div>
+        </div>
         <div class="container" id="users">
             <table>
                 <thead>
@@ -51,17 +47,13 @@
                 <tbody id="tbody"></tbody>
             </table>
         </div>
-        <div id="container" class="container"> <!-- DIV With Id 'container' And Class 'container' Starts -->
-            <!-- Content -->
-        </div> <!-- DIV With Id 'container' And Class 'container' Ends -->
-        <div id="send"> <!-- DIV With Id 'send' Starts -->
-            <input type="text" class='input' id='message_input' placeholder='Type Your Message Here'> <!-- INPUT With TYPE 'text', CLASS 'input', ID 'message_input' And PLACEHOLDER 'Type Your Message Here' -->
-            <button class="btn success" onclick='send()'>Send</button> <!-- BUTTON With Class 'btn, success' And Onclick 'send()' -->
-        </div> <!-- DIV With Id 'send' Ends -->
-    </main> <!-- MAIN With Id 'main' Ends -->
-    <footer id="footer"> <!-- FOOTER With Id 'footer' Starts -->
-        <!-- Content -->
-    </footer> <!-- FOOTER With Id 'footer' Ends -->
-    <script src="/chat/base/js/utility.js"></script> <!-- Script With SRC '/chat/base/js/utility.js' -->
-</body> <!-- BODY With Id 'body' Ends -->
-</html> <!-- HTML With Id 'html' Ends -->
+        <div id="container" class="container"></div>
+        <div id="send">
+            <input type="text" class='input' id='message_input' placeholder='Type Your Message Here'>
+            <button class="btn success" onclick='send()'>Send</button>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <script src="/chat/base/js/utility.js"></script>
+</body>
+</html>

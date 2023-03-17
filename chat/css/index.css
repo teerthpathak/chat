@@ -1,5 +1,4 @@
-/* Utility Classes */
-.container /* Class 'container' */
+.container
 {
     width: 70vw;
     margin: 20px auto;
@@ -7,7 +6,7 @@
     display: block;
 }
 
-.left /* Class 'left' */
+.left
 {
     background-color: var(--veryLight);
     margin: 1% 20% 1% 0%;
@@ -16,12 +15,12 @@
     box-shadow: 1px 1px 15px black;
 }
 
-.left:hover /* When Class 'left' Hovered */
+.left:hover
 {
     box-shadow: 1px 1px 30px black;
 }
 
-.right /* Class 'right' */
+.right
 {
     background-color: var(--veryLight);
     margin: 1% 0% 1% 20%;
@@ -30,12 +29,12 @@
     box-shadow: 1px 1px 15px black;
 }
 
-.right:hover /* When Class 'right' Hovered */
+.right:hover
 {
     box-shadow: 1px 1px 30px black;
 }
 
-.p /* Class 'p' (Mainly Used For Paragraphs) */
+.p
 {
     padding: 10px 10px 0px 10px;
     font-size: 15px;
@@ -55,7 +54,7 @@
     box-shadow: 1px 1px 5px black;
 }
 
-.sub-btn:hover /* When Class 'sub-btn' Hovered */
+.sub-btn:hover
 {
     box-shadow: 1px 1px 10px black;
 }
@@ -92,12 +91,11 @@
     overflow-y: auto;
 }
 
-.br /* Edit In Utility Class 'br' From '/base/css/utility.css' */
+.br
 {
     height: 55px !important;
 }
 
-/* DIV With Id 'send' */
 #send
 {
     display: flex;
@@ -111,8 +109,7 @@
     height: 20px;
 }
 
-/* CSS To Make The Page Responsive */
-@media only screen and (max-width: 1000px) /* Executed When Device Width Is '450px' Or Less */
+@media only screen and (max-width: 1000px)
 {
     #roomUtility > div{
         display: grid;
@@ -128,7 +125,7 @@
     }
 }
 
-@media only screen and (max-width: 650px) /* Executed When Device Width Is '450px' Or Less */
+@media only screen and (max-width: 650px)
 {
     #users table, #users table thead tr th, #tbody tr td
     {
@@ -139,78 +136,74 @@
     }
 }
 
-@media only screen and (max-width: 450px) /* Executed When Device Width Is '450px' Or Less */
+@media only screen and (max-width: 450px)
 {
-    .container /* Class 'container' */
+    .container
     {
         width: 85vw;
     }
 
-    /* Utility Classes */
-    .p /* Class 'p' */
+    .p
     {
         padding: 5px 5px 0px 5px;
     }
 
-    .small /* Class 'small' */
+    .small
     {
         padding: 0px 5px 5px 5px;
     }
 
-    .sub-btn /* Class 'sub-btn' */
+    .sub-btn
     {
         margin-left: 1px;
         font-size: 13px;
     }
 }
 
-@media only screen and (max-width: 350px) /* Executed When Device Width Is '350px' Or Less */
+@media only screen and (max-width: 350px)
 {
-    /* Utility Classes */
-    .left /* Class 'left' */
+    .left
     {
         margin: 1% 10% 1% 0%;
     }
 
-    .right /* Class 'right' */
+    .right
     {
         margin: 1% 0% 1% 10%;
     }
 }
 
-@media only screen and (max-width: 320px) /* Executed When Device Width Is '320px' Or Less */
+@media only screen and (max-width: 320px)
 {
-    .container /* Class 'container' */
+    .container
     {
         width: 83vw;
     }
 
-    .br /* Class 'br' */
+    .br
     {
         height: 65px !important;
     }
 
-    /* Utility Classes */
-    .left /* Class 'left' */
+    .left
     {
         margin: 1% 5% 1% 0%;
     }
 
-    .right /* Class 'right' */
+    .right
     {
         margin: 1% 0% 1% 5%;
     }
 }
 
-@media only screen and (max-width: 305px) /* Executed When Device Width Is '305px' Or Less */
+@media only screen and (max-width: 305px)
 {
-    /* Utility Classes */
-    .left /* Class 'left' */
+    .left
     {
         margin: 1% 3% 1% 0%;
     }
 
-    .right /* Class 'right' */
+    .right
     {
         margin: 1% 0% 1% 3%;
     }

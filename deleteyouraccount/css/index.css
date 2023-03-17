@@ -1,4 +1,3 @@
-/* CLASS 'container' */
 .container
 {
     margin: 5% 20%;
@@ -10,23 +9,22 @@
     padding: 3px;
 }
 
-#message /* ID 'message' */
+#message
 {
     display: none;
     margin-left: 3px;
 }
 
-@media only screen and (max-width: 810px) /* Executed When Device Width Is '810px' Or Less */
+@media only screen and (max-width: 810px)
 {
-    #deleteMyAccountButton /* ID 'deleteMyAccountButton' */
+    #deleteMyAccountButton
     {
         display: block;
     }
 }
 
-@media only screen and (max-width: 545px) /* Executed When Device Width Is '545px' Or Less */
+@media only screen and (max-width: 545px)
 {
-    /* CLASS 'container' */
     .container
     {
         margin: 5% 5%;
@@ -38,17 +36,17 @@
     }
 }
 
-@media only screen and (max-width: 350px) /* Executed When Device Width Is '350px' Or Less */
+@media only screen and (max-width: 350px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5% 3%;
     }
 }
 
-@media only screen and (max-width: 335px) /* Executed When Device Width Is '335px' Or Less */
+@media only screen and (max-width: 335px)
 {
-    .container /* CLASS 'container' */
+    .container
     {
         margin: 5% 1%;
     }

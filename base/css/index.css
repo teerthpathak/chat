@@ -1,4 +1,4 @@
-* /* Default CSS In Every Element */
+*
 {
     margin: 0px;
     padding: 0px;
@@ -6,7 +6,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-:root /* Variables */
+:root
 {
     --veryLight: #ffffff;
     --light: rgb(233, 233, 234);
@@ -27,13 +27,11 @@
     --veryDark: #000000;
 }
 
-/* Header */
-#navbar /* Navbar */
+#navbar
 {
     display: flex;
 }
 
-/* Element With Id 'left' */
 #left
 {
     align-items: center;
@@ -66,7 +64,6 @@
     color: var(--veryDark);
 }
 
-/* Element With Id 'center' */
 #center
 {
     display: flex;
@@ -80,7 +77,6 @@
     display: none;
 }
 
-/* Element With Id 'right' */
 #right
 {
     width: 25%;
@@ -93,7 +89,6 @@
     margin: 20px 20px 20px 5px;
 }
 
-/* Footer */
 #footer
 {
     position: fixed;
@@ -116,7 +111,6 @@
     margin-left: 10px;
 }
 
-/* Burger */
 #burger
 {
     display: none;
@@ -135,61 +129,59 @@
     margin: 5px 3px;
 }
 
-/* CSS To Make The Page Responsive */
-@media only screen and (max-width: 1020px) /* Executed When Device Width Is '1024px' Or Less */
+@media only screen and (max-width: 1020px)
 {
-    #right button /* right */
+    #right button
     {
         margin: 20px 13px 20px 5px;
     }
 }
 
-@media only screen and (max-width: 960px) /* Executed When Device Width Is '960px' Or Less */
+@media only screen and (max-width: 960px)
 {
-    #left /* left */
+    #left
     {
         width: 45%;
     }
     
-    #right /* right */
+    #right
     {
         width: 45%;
     }
 }
 
-@media only screen and (max-width: 860px) /* Executed When Device Width Is '860px' Or Less */
+@media only screen and (max-width: 860px)
 {
     
-    #navbar /* Navbar */
+    #navbar
     {
         display: grid;
     }
 
-    #left, /* left */
+    #left,
     #left ul {
         width: 100%;
         justify-content: start;
         align-items: center;
     }
 
-    #center /* center */
+    #center
     {
         width: 90%;
         margin: 0% 5%;
     }
 
-    #right /* right */
+    #right
     {
         width: 100%;
         justify-content: center;
     }
 
-    #burger /* burger */
+    #burger
     {
         display: block;
     }
 
-    /* Responsive */
     .navbarHeightResponsive {
         height: 69px;
     }

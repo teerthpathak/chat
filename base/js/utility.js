@@ -30,18 +30,36 @@ function redirect(law, dataCheck, url)
     }
 }
 
-function setData()
+function value_(id)
 {
-    setTimeout(() =>
-        {
-            document.getElementById("title").innerText += ` - Chat`;
-            document.getElementById("head").innerHTML += head;
-            document.getElementById("header").innerHTML += header;
-            document.getElementById("main").innerHTML += main;
-            document.getElementById("footer").innerHTML += footer;
-            loadScript(`/chat/base/js/index.js`);
-        },
-    700);
+    return document.getElementById(id).value;
+}
+
+function manageLabel(id, text, color_, display_)
+{
+    document.getElementById(id).innerText = text;
+    document.getElementById(id).style.color = color_;
+    document.getElementById(id).style.display = display_;
+}
+
+function manageLocalStorageData(action, itemKey, itemValue)
+{
+    if (action == 'get')
+    {
+        localStorage.getItem(itemKey);
+    }
+    else if (action == 'set')
+    {
+        localStorage.setItem(itemKey, itemValue);
+    }
+    else if (action == 'remove')
+    {
+        localStorage.removeItem(itemKey);
+    }
+    else
+    {
+        doNoting();
+    }
 }
 
 loadScript(`https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js`);
@@ -50,4 +68,14 @@ loadScript(`https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js`);
 loadScript(`https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js`);
 loadScript(`https://www.gstatic.com/firebasejs/live/3.1/firebase.js`);
 loadScript(`/chat/base/js/html.js`);
-setData();
+
+setTimeout(() =>
+    {
+        document.getElementById("title").innerText += ` - Chat`;
+        document.getElementById("head").innerHTML += head;
+        document.getElementById("header").innerHTML += header;
+        document.getElementById("main").innerHTML += main;
+        document.getElementById("footer").innerHTML += footer;
+        loadScript(`/chat/base/js/index.js`);
+    },
+100);

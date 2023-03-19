@@ -6,50 +6,35 @@ document.getElementById("welcome").style.display = 'unset';
 
 function login()
 {
-    email = document.getElementById("email").value;
-    password = document.getElementById("password").value;
+    email = value_('email');
+    password = value_('password');
+    email = convertToFirebaseAcceptableData('email');
 
-    email = email
-        .replaceAll(".", "ā")
-        .replaceAll("#", "ḥ")
-        .replaceAll("$", "ḍ")
-        .replaceAll("[", "ś")
-        .replaceAll("]", "ē")
-        .replaceAll(" ", "æ");
+    var getData =  getFirebaseData(`/users/${email}`);
+    var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
 
-    users.database().ref(`/${email}`).on("value", function (snapshot)
+    data = getKeysArray[2];
+    getPassword = data[1];
+
+    if (password == getPassword)
     {
-        var getData =  snapshot.val();
-        var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
-        data = getKeysArray[2];
-        getPassword = data[1];
+        username = email;
 
-        if (password == getPassword)
-        {
-            username = email;
+        data = getKeysArray[1];
+        getName = data[1];
 
-            data = getKeysArray[1];
-            getName = data[1];
-            name = getName;
+        name = getName;
 
-            localStorage.setItem("username", username);
-            localStorage.setItem("name", name);
+        manageLocalStorageData("set", "username", username);
+        manageLocalStorageData("set", "name", name);
 
-            document.getElementById("message").innerText = `Welcome! ${name}`;
-            document.getElementById("message").style.color = 'rgb(0, 210, 0)';
-            document.getElementById("message").style.display = 'unset';
+        manageLabel('message', `Welcome! ${name}`, 'rgb(0, 210, 0)', 'unset');
+        manageLabel('welcome', `Welcome! ${name}`, '', 'unset');
 
-            document.getElementById("welcome").innerText = `Welcome! ${name}`;
-            document.getElementById("welcome").style.display = 'unset';
-
-            redirect('!=', username, '');
-            
-        }
-        else
-        {
-            document.getElementById("message").innerText = `Incorrect Password! Please Try Again`;
-            document.getElementById("message").style.color = 'rgb(210, 10, 10)';
-            document.getElementById("message").style.display = 'unset';
-        }
-    });
+        redirect('!=', username, '');
+    }
+    else
+    {
+        manageLabel('message', `Incorrect Password! Please Try Again`, 'rgb(210, 10, 10)', 'unset');
+    }
 }

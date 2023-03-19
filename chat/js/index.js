@@ -1,6 +1,7 @@
 redirect('==', roomId, '');
+manageLocalStorageData('set', "page", Location);
 setTimeout(() => {
-    var page = localStorage.getItem("page");
+    var page = manageLocalStorageData('get', 'page');
     if(page == "/chat/"){   
         var header = document.getElementById("header");
         var roomUtility = document.getElementById("roomUtility");
@@ -19,121 +20,114 @@ setTimeout(() => {
 function getData()
 {  
     document.getElementById("container").innerHTML = "";
-    chats.database().ref(`/${roomLocation}/${roomId}`).on("value", function (snapshot)
+    var getData = getFirebaseData(`/chats/${roomLocation}/${roomId}`);
+    var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
+    var getArray = Object.entries(getData);
+
+    for (let i = 0; i < getKeysArray.length; i++)
     {
-        var getData = snapshot.val();
-        var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
-        var getArray = Object.entries(getData);
+        getChatId = getArray[i];
+        chatId = getChatId[0];
 
-        for (let i = 0; i < getKeysArray.length; i++)
-        {
-            getChatId = getArray[i];
-            chatId = getChatId[0];
+        data = getKeysArray[i];
+        main = data[1];
 
-            data = getKeysArray[i];
-            main = data[1];
-
-            date = main['date'];
-            message = main['message'];
-            name = main['name'];
-            time = main['time'];
-            sendersUsername = main['username'];
+        date = main['date'];
+        message = main['message'];
+        name = main['name'];
+        time = main['time'];
+        sendersUsername = main['username'];
             
-            if (sendersUsername == username)
-            {
-                document.getElementById("container").innerHTML += chat.replaceAll('{align}', 'right')
-                                                                      .replaceAll('{message}', message)
-                                                                      .replaceAll('{date}', date)
-                                                                      .replaceAll('{time}', time)
-                                                                      .replaceAll('{chatId}', chatId)
-                                                                      .replaceAll('{name}', name)
-                                                                      .replaceAll('{username}', username);
-            }
-            else if(sendersUsername != username)
-            {
-                document.getElementById("container").innerHTML += chat.replaceAll('{align}', 'left')
-                                                                      .replaceAll('{message}', message)
-                                                                      .replaceAll('{date}', date)
-                                                                      .replaceAll('{time}', time)
-                                                                      .replaceAll('{chatId}', chatId)
-                                                                      .replaceAll('{name}', name)
-                                                                      .replaceAll('{username}', username);
-
-                document.getElementById(`${chatId}_delete_message_button`).style.display = "none";
-            }
-            else {
-                doNoting();
-            }
-        }
-    });
-
-    rooms.database().ref(`/${roomLocation}/${roomId}`).on("value", function (snapshot)
-    {
-        var getData = snapshot.val();
-        document.querySelector("#change_name").value = getData['name'];
-        document.querySelector("#room_name").innerText = getData['name'];
-
-        var getArray = Object.entries(getData['users']);
-        var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
-        for (let i = 0; i < getKeysArray.length - 1; i++)
+        if (sendersUsername == username)
         {
-            var getData = snapshot.val();
-            main = getArray[i];
-            users.database().ref(`/${main[0]}`).on("value", function (snapshot)
-            {
-                var getData = snapshot.val();
-                main = getArray[i];
-            
-                getRole = main[1];
-                role = getRole['role'].replaceAll("admin", "Admin")
-                                      .replaceAll("regular", "Regular");
-                
-                name = getData['name'];
-                email = getData['email'];
+            document.getElementById("container").innerHTML += chat.replaceAll('{align}', 'right')
+                                                                  .replaceAll('{message}', message)
+                                                                  .replaceAll('{date}', date)
+                                                                  .replaceAll('{time}', time)
+                                                                  .replaceAll('{chatId}', chatId)
+                                                                  .replaceAll('{name}', name)
+                                                                  .replaceAll('{username}', username);
+        }
+        else if(sendersUsername != username)
+        {
+            document.getElementById("container").innerHTML += chat.replaceAll('{align}', 'left')
+                                                                  .replaceAll('{message}', message)
+                                                                  .replaceAll('{date}', date)
+                                                                  .replaceAll('{time}', time)
+                                                                  .replaceAll('{chatId}', chatId)
+                                                                  .replaceAll('{name}', name)
+                                                                  .replaceAll('{username}', username);
 
-                document.getElementById("tbody").innerHTML += user.replaceAll("{name}", name)
-                                                                  .replaceAll("{role}", role)
-                                                                  .replaceAll("{email}", email);
-            });
+            document.getElementById(`${chatId}_delete_message_button`).style.display = "none";
         }
-
-        AllUsers = snapshot.val()['users'];
-
-        getRole = AllUsers[username];
-        role = getRole['role'].replaceAll("admin", "Admin")
-                              .replaceAll("regular", "Regular");
-
-        if((role == 'Admin') && (roomLocation != username))
-        {
-            document.getElementById("delete_room").style.display = "none";
-        }
-        else if((role == 'Regular') && (roomLocation != username))
-        {
-            document.getElementById("delete_room").style.display = "none";
-            document.getElementById("show_edit_group_name_settings").style.display = "none";
-            document.getElementById("show_add_user_settings").style.display = "none";
-        }
-        else if((role == 'Admin') && (roomLocation == username))
-        {
-            document.getElementById("exit_room").style.display = "none";
-        }
-        else if((role == 'Regular') && (roomLocation == username))
-        {
-            document.getElementById("exit_room").style.display = "none";
-            document.getElementById("show_edit_group_name_settings").style.display = "none";
-            document.getElementById("show_add_user_settings").style.display = "none";
-        }
-        else
-        {
+        else {
             doNoting();
         }
-    });
+    }
+
+    var getData = getFirebaseData(`/rooms/${roomLocation}/${roomId}`);
+    document.querySelector("#change_name").value = getData['name'];
+    document.querySelector("#room_name").innerText = getData['name'];
+
+    var getArray = Object.entries(getData['users']);
+    var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
+    for (let i = 0; i < getKeysArray.length - 1; i++)
+    {
+        var getData = snapshot.val();
+        main = getArray[i];
+
+        var getData = getFirebaseData(`/users/${main[0]}`);
+
+        main = getArray[i];
+            
+        getRole = main[1];
+        role = getRole['role'].replaceAll("admin", "Admin")
+                              .replaceAll("regular", "Regular");
+                
+        name = getData['name'];
+        email = getData['email'];
+
+        document.getElementById("tbody").innerHTML += user.replaceAll("{name}", name)
+                                                          .replaceAll("{role}", role)
+                                                          .replaceAll("{email}", email);
+    }
+
+    AllUsers = snapshot.val()['users'];
+
+    getRole = AllUsers[username];
+    role = getRole['role'].replaceAll("admin", "Admin")
+                          .replaceAll("regular", "Regular");
+
+    if((role == 'Admin') && (roomLocation != username))
+    {
+        document.getElementById("delete_room").style.display = "none";
+    }
+    else if((role == 'Regular') && (roomLocation != username))
+    {
+        document.getElementById("delete_room").style.display = "none";
+        document.getElementById("show_edit_group_name_settings").style.display = "none";
+        document.getElementById("show_add_user_settings").style.display = "none";
+    }
+    else if((role == 'Admin') && (roomLocation == username))
+    {
+        document.getElementById("exit_room").style.display = "none";
+    }
+    else if((role == 'Regular') && (roomLocation == username))
+    {
+        document.getElementById("exit_room").style.display = "none";
+        document.getElementById("show_edit_group_name_settings").style.display = "none";
+        document.getElementById("show_add_user_settings").style.display = "none";
+    }
+    else
+    {
+        doNoting();
+    }
 }
 getData();
 
 function send()
 {
-    message = document.getElementById("message_input").value;
+    message = value_('message_input');
     getDate = new Date();
 
     date = getDate.getDate();
@@ -147,15 +141,13 @@ function send()
     chatId.toString;
     chatId = chatId.replaceAll(" ", "ṇ")
 
-    chats.database().ref(`/${roomLocation}/${roomId}`).child(chatId).update(
-        {
-            date: fullDate,
-            message: message,
-            name: name,
-            time: time,
-            username: username
-        }
-    );
+    setFirebaseData('chats', `/chats/${roomLocation}/${roomId}`, chatId, {
+        date: fullDate,
+        message: message,
+        name: name,
+        time: time,
+        username: username
+    });
     getData();
     message = document.getElementById("message_input").value = '';
 }
@@ -168,12 +160,10 @@ function show_edit_group_name_settings()
 
 function save_edited_room_name()
 {
-    var room_name_edited = document.getElementById('change_name').value;
-    rooms.database().ref(`/${roomLocation}`).child(`/${roomId}`).update(
-        {
-            name: room_name_edited
-        }
-    );
+    var room_name_edited = value_('change_name');
+    setFirebaseData('rooms', `${roomLocation}`, `/${roomId}`, {
+        name: room_name_edited
+    });
     room_name_edited = '';
     document.getElementById('show_edit_group_name_settings').style.display = 'unset';
     document.getElementById('edit_group_name').style.display = 'none';
@@ -188,32 +178,22 @@ function show_add_user_settings()
 function add_user()
 {
     var getRole = document.getElementsByName('role');
-    console.log(getRole);
     for (i = 0; i < getRole.length; i++)
     {
         if (getRole[i].checked)
         {
             role = getRole[i].value;
 
-            new_user = document.getElementById(`add_user_input`).value;
-            new_user = new_user.replaceAll(".", "ā")
-                               .replaceAll("#", "ḥ")
-                               .replaceAll("$", "ḍ")
-                               .replaceAll("[", "ś")
-                               .replaceAll("]", "ē")
-                               .replaceAll(" ", "æ");
+            new_user = value_('add_user_input');
+            new_user = convertToFirebaseAcceptableData(new_user);
 
-            rooms.database().ref(`${roomLocation}/${roomId}/users`).child(`${new_user}`).update(
-                {
-                    role: role
-                }
-            );
+            setFirebaseData('rooms', `/rooms/${roomLocation}/${roomId}/users`, `${new_user}`, {
+                role: role
+            });
 
-            rooms.database().ref(`/${new_user}`).child(`${roomId}`).update(
-                {
-                    location: roomLocation
-                }
-            );
+            setFirebaseData('rooms', `/rooms/${new_user}`, `${roomId}`, {
+                location: roomLocation
+            });
         }
     }
     getData();
@@ -223,33 +203,29 @@ function add_user()
 
 function exit_room()
 {
-    rooms.database().ref(`/${roomLocation}/${roomId}/users`).child(`${username}`).remove()
-    rooms.database().ref(`/${username}`).child(`${roomId}`).remove()
+    removeFirebaseData(`rooms`, `${roomLocation}/${roomId}/users`, `${username}`);
+    removeFirebaseData(`rooms`, `${username}`, `${roomId}`);
 }
 
 function delete_room()
 {
-    let username = localStorage.getItem("username");
-    rooms.database().ref(`/${roomLocation}/${roomId}/users`).on("value", function (snapshot)
+    let username = manageLocalStorageData('get', 'username');
+    var getData = getFirebaseData(`/rooms/${roomLocation}/${roomId}/users`);
+    var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
+    var getArray = Object.entries(getData);
+
+    for (let i = 0; i < getKeysArray.length; i++)
     {
-        var getData = snapshot.val();
-        var getKeysArray = Object.keys(getData).map((key) => [Number(key), getData[key]]);
-        var getArray = Object.entries(getData);
-
-        for (let i = 0; i < getKeysArray.length; i++)
-        {
-            getUsername = getArray[0];
-            username = getUsername[0];
-
-            rooms.database().ref(`/${username}`).child(`${roomId}`).remove();
-        }
-    });
-    rooms.database().ref(`/${roomLocation}/${roomId}/users`).child(`${username}`).remove();
+        getUsername = getArray[0];
+        username = getUsername[0];
+        removeFirebaseData(`rooms`, `${username}`, `${roomId}`);
+    }
+    removeFirebaseData(`rooms`, `${roomLocation}/${roomId}/users`, `${username}`);
     getData();
 }
 
 function delete_message(chatId)
 {
-    chats.database().ref(`/${roomLocation}/${roomId}`).child(`${chatId}`).remove()
+    removeFirebaseData('chats', `${roomLocation}/${roomId}`, `${chatId}`)
     getData();
 }

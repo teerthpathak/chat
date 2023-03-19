@@ -10,21 +10,15 @@ function addScript()
     {
         loadScript(`${Location}js/index.js`);
         document.getElementById('stylesheet').href = `${Location}css/index.css`;
-        localStorage.setItem("page", Location);
     }
 }
 addScript();
 
-function welcome()
-{
-    document.getElementById("welcome").innerText = `Welocme! ${name}`;`Welcome ${name}`
-    document.getElementById("welcome").style.display = 'unset';
-}
-welcome();
+manageLabel('welcome', `Welocme! ${name}`, '', 'unset');
 
 burger.addEventListener('click', () =>
 {
-    burger = document.querySelector('#burger');
+        burger = document.querySelector('#burger');
         navbar = document.querySelector('#navbar');
         center = document.querySelector('#center');
         right = document.querySelector('#right');
@@ -39,9 +33,9 @@ burger.addEventListener('click', () =>
 
 function logout()
 {
-    localStorage.removeItem("username");
-    localStorage.removeItem("name");
-    localStorage.removeItem("roomId");
-    localStorage.removeItem("roomLocation");
+    manageLocalStorageData('remove', 'username');
+    manageLocalStorageData('remove', 'name');
+    manageLocalStorageData('remove', 'roomId');
+    manageLocalStorageData('remove', 'roomLocation');
     redirect('!=', username, 'login');
 }

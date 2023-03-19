@@ -6,44 +6,25 @@ document.getElementById("welcome").style.display = 'unset';
 
 function singup()
 {
-    email = document.getElementById("email").value;
-    name = document.getElementById("name").value;
-    password = document.getElementById("password").value;
+    email = value_('email').tostring;
+    name = value_('name').tostring;
+    password = value_('password').tostring;
+    username = convertToFirebaseAcceptableData('email');
 
-    email.tostring;
-    name.tostring;
-    password.tostring;
+    manageLabel('message', 'Error While Creating Your Account', 'rgb(210, 10, 10)', 'unset');
 
-    username = email
-        .replaceAll(".", "ā")
-        .replaceAll("#", "ḥ")
-        .replaceAll("$", "ḍ")
-        .replaceAll("[", "ś")
-        .replaceAll("]", "ē")
-        .replaceAll(" ", "æ");
+    setFirebaseData('users', '', username, {
+        email: email,
+        name: name,
+        password: password
+    });
 
-    document.getElementById("message").innerText = 'Error While Creating Your Account';
-    document.getElementById("message").style.color = 'rgb(210, 10, 10)';
-    document.getElementById("message").style.display = 'unset';
+    manageLocalStorageData("set", "username", username);
+    manageLocalStorageData("set", "name", name);
+    
+    manageLabel('message', 'Congratulations! You Account Had Been Created', 'rgb(0, 210, 0)', 'unset');
 
-    users.database().ref("/").child(`${username}`).update(
-        {
-            email: email,
-            name: name,
-            password: password
-        }
-    );
-
-    localStorage.setItem("username", username);
-    localStorage.setItem("name", name);
-
-    document.getElementById("message").innerText = 'Congratulations! You Account Had Been Created';
-    document.getElementById("message").style.color = 'rgb(0, 210, 0)';
-    document.getElementById("message").style.display = 'unset';
-
-    setTimeout(() =>
-        {
-            redirect('!=', username, '');
-        },
-    1000);
+    setTimeout(() => {
+        redirect('!=', username, '');
+    }, 1000);
 }
